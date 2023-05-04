@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 16:36:49 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/04/24 00:57:49 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/04 19:02:55 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 # define HEXMIN "0123456789abcdef"
 # define HEXMAX "0123456789ABCDEF"
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -22,6 +25,8 @@
 # include <limits.h>
 # include <stdarg.h>
 # include <stdint.h>
+# include <stdbool.h>
+# include <fcntl.h>
 
 typedef struct s_list
 {
@@ -80,5 +85,8 @@ int			ft_printfn(int n);
 int			ft_printfun(unsigned int n);
 int			ft_printfx(unsigned long long n, char *base);
 int			ft_printfp(unsigned long long n);
+char		*get_next_line(int fd);
+char		*strjoin(char *line, char *buffer);
+bool		ft_manage_buffer(char *buffer);
 
 #endif
