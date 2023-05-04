@@ -6,11 +6,11 @@
 #    By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/03 14:29:34 by jalves-c          #+#    #+#              #
-#    Updated: 2023/05/04 02:07:10 by jalves-c         ###   ########.fr        #
+#    Updated: 2023/05/04 02:15:33 by jalves-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	mlxtest
+NAME	=	so_long
 CC		=	@gcc
 FLAGS	=	-Wall -Wextra -Werror -fsanitize=address 
 LFT		=	libft/libft.a
@@ -51,7 +51,6 @@ obj/%.o: 	src/%.c
 
 clean:
 			@make -sC libft clean
-
 			@make -s -C minilibx-linux clean
 			@rm -rf $(OBJ) obj
 			@echo "$(GREEN) [ OK ] | Object files removed.$(RESET)"
