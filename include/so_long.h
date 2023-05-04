@@ -6,7 +6,11 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 17:23:08 by jalves-c          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/05/04 02:53:21 by jalves-c         ###   ########.fr       */
+=======
+/*   Updated: 2023/05/04 03:32:39 by jalves-c         ###   ########.fr       */
+>>>>>>> refs/remotes/origin/main
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +40,11 @@
 # define GREEN_PIXEL 0XFF00
 # define WHITE_PIXEL 0XFFFFFF
 
+/*typedef struct s_map
+{
+
+}
+*/
 typedef struct s_rect
 {
 	int		x;
