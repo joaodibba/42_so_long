@@ -5,82 +5,68 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/03/20 11:37:19 by jalves-c          #+#    #+#              #
-#    Updated: 2023/03/20 11:58:10 by jalves-c         ###   ########.fr        #
+#    Created: 2023/05/03 14:29:34 by jalves-c          #+#    #+#              #
+#    Updated: 2023/05/04 02:02:45 by jalves-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= so_long
-CFLAGS		= -Wall -Werror -Wextra -O3 -g
-INCLUDE		= -I include
-LIBFTDIR	= includes/libft
-LIBFT		= $(LIBFTDIR)/libft.a
-LFLAGS		= -L${LIBFTDIR} -lft
-UNAME		:= $(shell uname)
+NAME	=	mlxtest
+CC		=	@gcc
+FLAGS	=	-Wall -Wextra -Werror -fsanitize=address 
+LFT		=	libft/libft.a
+MLX 	=	minilibx-linux/libmlx.a
+INC		=	-I ./libft -I ./minilibx-linux
+LIB		=	-L ./libft -lft -L ./minilibx-linux -lmlx -lXext -lX11 -lm -lbsd
+SRC		=	$(wildcard src/*.c)
+OBJ		= 	$(patsubst src/%.c,obj/%.o,$(SRC))
 
-ifeq ($(UNAME), Darwin)
-		LIBMLXDIR	= includes/minilibx-mac-osx
-		LIBMLX		= $(LIBMLXDIR)/libmlx.a
-		CC			= gcc
-		LFLAGS		+= -L$(LIBMLXDIR) -lmlx -framework OpenGL -framework AppKit
-else
-		LIBMLXDIR	= includes/minilibx-linux
-		LIBMLX		= $(LIBMLXDIR)/libmlx.a
-		CC			= gcc
-		LFLAGS		+= -L$(LIBMLXDIR) -lmlx -lbsd -lXext -lX11 -lm
-endif
+#COLORS
+RED =		\033[0;31m
+GREEN =		\033[0;32m
+YELLOW =	\033[0;33m
+RESET =		\033
 
-SRC_DIR		= src
-SRC			= $(wildcard $(SRC_DIR)/*.c)
-OBJ			= $(SRC:%.c=%.o)
 
-BONUS_DIR	= bonus
-BONUS_SRC	= $(wildcard $(BONUS_DIR)/*.c)
-BONUS_OBJ	= $(BONUS_SRC:%.c=%.o)
+all:		$(MLX) $(LFT) obj $(NAME)
 
-all:		$(NAME)
+$(NAME):	$(OBJ)
+			$(CC) $(FLAGS)-o $@ $^ $(LIB)
 
-$(NAME):	$(OBJ) $(LIBFT) $(LIBMLX)
-			$(CC) $(CFLAGS) $(OBJ) $(INCLUDE) $(LFLAGS) -o $(NAME)
-			@echo "\033[0;32m$(NAME) successfully compiled!\033[0;32m"
+$(MLX):
+			@echo "$(YELLOW)  [ .. ] | Compiling minilibx...$(RESET)"
+			@make -s -C minilibx-linux
+			@echo "$(GREEN) [ OK ] | Minilibx ready!$(RESET)"
 
-$(LIBFT):
-			make -C $(LIBFTDIR)
+$(LFT):		
+			@echo "$(YELLOW) [ .. ] | Compiling libft...$(RESET)"
+			@make -s -C libft
+			@echo "$(GREEN) [ OK ] | Libft ready!$(RESET)"
 
-$(LIBMLX):
-			make -C $(LIBMLXDIR)
+obj:
+			@mkdir -p obj
 
-bonus:		$(BONUS_OBJ) $(LIBFT) $(LIBMLX)
-			$(CC) $(CFLAGS) $(BONUS_OBJ) $(INCLUDE) $(LFLAGS) -o $(NAME)
-			@echo "\033[0;32m$(NAME) bonus successfully compiled!\033[0;32m"
-
-test:
-			valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose --log-file=valgrind-out.txt ./$(NAME) maps/bigmap_bonus.ber
+obj/%.o: 	src/%.c
+			@mkdir -p $(dir $@)
+			$(CC) $(FLAGS) $(INC) -c $< -o $@
 
 clean:
-			@make clean -C $(LIBFTDIR)
-			@make clean -C $(LIBMLXDIR)
-			rm -rf $(OBJ)
-			rm -rf $(BONUS_OBJ)
-			rm -rf valgrind-out.txt
+			@make -sC libft clean
+
+			@make -s -C minilibx-linux clean
+			@rm -rf $(OBJ) obj
+			@echo "$(GREEN) [ OK ] | Object files removed.$(RESET)"
 
 fclean:		clean
-			rm -rf $(LIBFT)
-			rm -rf $(LIBMLX)
-			rm -rf $(NAME)
-			@echo "\033[0;33mso_long executable, libraries, and object files successfully deleted!\033[0;33m"
+			@make -sC libft fclean
+			@rm -rf $(NAME)
 
-re: 		fclean all
+			@echo "$(GREEN) [ OK ] | binary file removed.$(RESET)"
 
-rebonus:	fclean	bonus
+re:			fclean norm all
 
-.PHONY: 	re all clean fclean
+norm :
+			norminette src include
+			@echo "$(GREEN) [ OK ] | Norminette.$(RESET)"
 
-show:
-	@printf "UNAME		: $(UNAME)\n"
-	@printf "NAME  		: $(NAME)\n"
-	@printf "CC			: $(CC)\n"
-	@printf "CFLAGS		: $(CFLAGS)\n"
-	@printf "LFLAGS		: $(LFLAGS)\n"
-	@printf "SRC		: $(SRC)\n"
-	@printf "OBJ		: $(OBJ)\n"
+.PHONY:		all clean fclean re
+
