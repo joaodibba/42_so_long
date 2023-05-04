@@ -6,7 +6,7 @@
 #    By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/03 14:29:34 by jalves-c          #+#    #+#              #
-#    Updated: 2023/05/04 02:02:45 by jalves-c         ###   ########.fr        #
+#    Updated: 2023/05/04 02:06:33 by jalves-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ OBJ		= 	$(patsubst src/%.c,obj/%.o,$(SRC))
 RED =		\033[0;31m
 GREEN =		\033[0;32m
 YELLOW =	\033[0;33m
-RESET =		\033
+RESET =		\033[0m
 
 
 all:		$(MLX) $(LFT) obj $(NAME)
