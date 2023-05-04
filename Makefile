@@ -6,7 +6,7 @@
 #    By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/03 14:29:34 by jalves-c          #+#    #+#              #
-#    Updated: 2023/05/04 02:06:33 by jalves-c         ###   ########.fr        #
+#    Updated: 2023/05/04 02:07:10 by jalves-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ RESET =		\033[0m
 all:		$(MLX) $(LFT) obj $(NAME)
 
 $(NAME):	$(OBJ)
-			$(CC) $(FLAGS)-o $@ $^ $(LIB)
+			$(CC) $(FLAGS) -o $@ $^ $(LIB)
 
 $(MLX):
 			@echo "$(YELLOW)  [ .. ] | Compiling minilibx...$(RESET)"
