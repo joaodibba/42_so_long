@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 16:36:49 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/04 19:02:55 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/04 19:58:42 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,6 @@ int			ft_printfp(unsigned long long n);
 char		*get_next_line(int fd);
 char		*strjoin(char *line, char *buffer);
 bool		ft_manage_buffer(char *buffer);
+size_t	ft_strcmp(const char *s1, const char *s2);
 
 #endif

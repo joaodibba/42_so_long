@@ -6,7 +6,7 @@
 #    By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/03 14:29:34 by jalves-c          #+#    #+#              #
-#    Updated: 2023/05/04 02:15:33 by jalves-c         ###   ########.fr        #
+#    Updated: 2023/05/04 19:56:01 by jalves-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,7 +61,7 @@ fclean:		clean
 
 			@echo "$(GREEN) [ OK ] | binary file removed.$(RESET)"
 
-re:			fclean norm all
+re:			fclean all #add norm before all
 
 norm :
 			norminette src include

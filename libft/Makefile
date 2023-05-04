@@ -63,7 +63,8 @@ SRC   = src/ft_atoi.c \
 		src/ft_printf.c \
 		src/ft_printformat.c \
 		src/get_next_line.c \
-		src/get_next_line_utils.c
+		src/get_next_line_utils.c \
+		src/ft_strcmp.c
 
 OBJ = $(SRC:.c=.o)
 
