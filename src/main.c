@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 01:43:24 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/04 02:43:41 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/04 03:04:47 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,17 @@
 
 int	arguments_check(int ac, char **av)
 {
-	if (ac != 2)
+	if (ac < 2)
 	{
-		ft_printf("\033[0;31mError: ./client [PID] [MESSAGE]\n\033[0m");
-		return (MLX_ERROR);
+		(void)av;
+		ft_printf("\033[0;31mError: ./so_long <PATH/TO/MAP>\n\033[0m");
+		return (EXIT_FAILURE);
+	}
+	else if (ac > 2)
+	{
+		(void)av;
+		ft_printf("\033[0;31mError: You can choose only one map!\n\033[0m");
+		return (EXIT_FAILURE);
 	}
 	return (0);
 }
@@ -25,5 +32,5 @@ int	arguments_check(int ac, char **av)
 int	main(int ac, char **av)
 {
 	if (!arguments_check(ac, av))
-		return (MLX_ERROR);
+		return (EXIT_FAILURE);
 }
