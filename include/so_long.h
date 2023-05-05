@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 17:21:56 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/05 15:23:39 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/05 15:42:41 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@
 
 typedef struct s_map
 {
-	char	*map_path;
 	char 	**map;
+	char	*map_path;
 }			t_map;
 
 typedef struct s_rect

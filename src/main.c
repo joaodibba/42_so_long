@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 01:43:24 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/05 15:35:00 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/05 15:48:12 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,14 @@ void	read_map(char *path_to_map, t_map *map)
 	int	fd;
 	char *line;
 	char *text;
-
+	
 	fd = open(path_to_map, 0 , O_RDONLY);
 	if (fd == -1)
 	{
 		ft_printf("\033[0;31mError: reading map <%s>.\n\033[0m", path_to_map);
 		exit(EXIT_FAILURE);
 	}
-	strjoin(path_to_map, map->map_path);
+	map->map_path = ft_strdup(path_to_map);
 	text = ft_strdup("");
 	while((line = get_next_line(fd)) != NULL)
 	{
@@ -93,6 +93,7 @@ int	main(int ac, char **av)
 	if (arguments_check(ac, av) != EXIT_SUCCESS)
 		return (EXIT_FAILURE);
 	read_map(av[1], &map);
-	return (EXIT_FAILURE);
-
+	free_map(map.map);
+	free(map.map_path);
+	return (EXIT_SUCCESS);
 }
