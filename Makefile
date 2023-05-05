@@ -6,7 +6,7 @@
 #    By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/03 14:29:34 by jalves-c          #+#    #+#              #
-#    Updated: 2023/05/04 19:56:01 by jalves-c         ###   ########.fr        #
+#    Updated: 2023/05/05 19:26:42 by jalves-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ $(NAME):	$(OBJ)
 			$(CC) $(FLAGS) -o $@ $^ $(LIB)
 
 $(MLX):
-			@echo "$(YELLOW)  [ .. ] | Compiling minilibx...$(RESET)"
+			@echo "$(YELLOW) [ .. ] | Compiling minilibx...$(RESET)"
 			@make -s -C minilibx-linux
 			@echo "$(GREEN) [ OK ] | Minilibx ready!$(RESET)"
 
@@ -51,14 +51,13 @@ obj/%.o: 	src/%.c
 
 clean:
 			@make -sC libft clean
-			@make -s -C minilibx-linux clean
+			@make -sC minilibx-linux clean
 			@rm -rf $(OBJ) obj
 			@echo "$(GREEN) [ OK ] | Object files removed.$(RESET)"
 
 fclean:		clean
 			@make -sC libft fclean
 			@rm -rf $(NAME)
-
 			@echo "$(GREEN) [ OK ] | binary file removed.$(RESET)"
 
 re:			fclean all #add norm before all
