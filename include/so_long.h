@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 17:21:56 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/06 03:20:15 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/06 18:22:28 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdio.h>
 # include <X11/X.h>
 # include <X11/keysym.h>
+# include <stdbool.h>
 
 //WINDOW SIZE
 # define WINDOW_WIDTH 500
@@ -40,6 +41,8 @@ typedef struct s_map
 {
 	char 	**map;
 	char	*map_path;
+	int		*rows;
+	int		*cols;
 }			t_map;
 
 typedef struct s_rect
