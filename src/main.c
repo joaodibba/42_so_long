@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 01:43:24 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/05 19:36:23 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/06 03:09:42 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 
 int	map_validator(t_map *map)
 {
-	
+	(void)map;
+	return(0);
 }
 
 void	free_map(char **map)
 {
 	int	i;
-	if(!map)
+
+	if (!map)
 		return ;
 	i = 0;
 	while (map[i])
@@ -38,12 +40,12 @@ void	map_error(t_map *map)
 
 void	read_map(char *path_to_map, t_map *map)
 {
-	int	fd;
-	char *line;
-	char *text;
-	char *temp;
-	
-	fd = open(path_to_map, 0 , O_RDONLY);
+	int		fd;
+	char	*line;
+	char	*text;
+	char	*temp;
+
+	fd = open(path_to_map, 0, O_RDONLY);
 	if (fd == -1)
 	{
 		ft_printf("\033[0;31m [Error] READING MAP <%s>.\n\033[0m", path_to_map);
@@ -51,8 +53,9 @@ void	read_map(char *path_to_map, t_map *map)
 	}
 	map->map_path = ft_strdup(path_to_map);
 	text = ft_strdup("");
-	while((line = get_next_line(fd)) != NULL)
+	while (get_next_line(fd) != NULL)
 	{
+		line = get_next_line(fd);
 		temp = ft_strjoin(text, line);
 		free(text);
 		free(line);
@@ -60,17 +63,17 @@ void	read_map(char *path_to_map, t_map *map)
 	}
 	map->map = ft_split(text, '\n');
 	free(text);
-	if(map->map[0] == 0)
+	if (map->map[0] == 0)
 		map_error(map);
 	close(fd);
 }
 
-int map_check(char *path_to_map)
+int	map_check(char *path_to_map)
 {
-	size_t len;
+	size_t	len;
 
 	len = ft_strlen(path_to_map);
-	if(len < 5 || ft_strcmp(path_to_map + len - 4,".ber") != 0)
+	if (len < 5 || ft_strcmp(path_to_map + len - 4,".ber") != 0)
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
@@ -83,7 +86,7 @@ int	arguments_check(int ac, char **av)
 		ft_printf("\033[0;31m [Error] ./so_long <PATH/TO/MAP.ber>.\n\033[0m");
 		return (EXIT_FAILURE);
 	}
-	else if(map_check(av[1]))
+	else if (map_check(av[1]))
 	{
 		ft_printf("\033[0;31m [Error] <%s> is not a valid <PATH/TO/MAP.ber>.\n\033[0m", av[1]);
 		return (EXIT_FAILURE);
@@ -95,7 +98,7 @@ int	arguments_check(int ac, char **av)
 
 int	main(int ac, char **av)
 {
-	t_map map;
+	t_map	map;
 
 	if (arguments_check(ac, av) != EXIT_SUCCESS)
 		return (EXIT_FAILURE);
