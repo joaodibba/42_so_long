@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 17:21:56 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/05 15:42:41 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/06 02:49:46 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # include "../libft/libft.h"
 # include <stdlib.h>
 # include <stdio.h>
-# include <X11/X.h>
-# include <X11/keysym.h>
+//# include <X11/X.h>
+//# include <X11/keysym.h>
 
 //WINDOW SIZE
 # define WINDOW_WIDTH 500
