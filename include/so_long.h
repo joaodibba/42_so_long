@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 17:21:56 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/06 03:20:15 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/06 16:42:35 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,12 @@ typedef struct s_data
 	t_player	*player;
 	int			cur_img;
 }				t_data;
+
+int	map_check(char *path_to_map);
+int	map_validator(t_map *map);
+void	free_map(char **map);
+void	map_error(t_map *map);
+int	arguments_check(int ac, char **av);
+void	read_map(char *path_to_map, t_map *map);
 
 #endif
