@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 03:45:59 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/06 03:49:11 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/06 18:31:54 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,16 @@ int	map_check(char *path_to_map)
 	return (EXIT_SUCCESS);
 }
 
-int	map_validator(t_map *map)
+void	get_map_dimensions(t_map	*map)
+{
+	map->rows = sizeof(map->map) / sizeof(char *);
+	map->cols = ft_strlen(map->map[0]);
+}
+
+bool	map_validator(t_map *map)
 {
 	(void)map;
-	return (0);
+	return (true);
 }
 
 void	free_map(char **map)

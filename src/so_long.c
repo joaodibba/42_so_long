@@ -6,35 +6,35 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 01:43:24 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/06 03:49:25 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/06 18:27:53 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-int	arguments_check(int ac, char **av)
+bool	arguments_check(int ac, char **av)
 {
 	if (ac != 2)
 	{
 		(void)av;
 		ft_printf("\033[0;31m [Error] ./so_long <PATH/TO/MAP.ber>.\n\033[0m");
-		return (EXIT_FAILURE);
+		return (false);
 	}
 	else if (map_check(av[1]))
 	{
 		ft_printf("\033[0;31m [Error] <%s> is not a valid <PATH/TO/MAP.ber>.\n\033[0m", av[1]);
-		return (EXIT_FAILURE);
+		return (false);
 	}
-	return (EXIT_SUCCESS);
+	return (true);
 }
 
 int	main(int ac, char **av)
 {
 	t_map	map;
 
-	if (arguments_check(ac, av) != EXIT_SUCCESS)
+	if (arguments_check(ac, av) != true)
 		return (EXIT_FAILURE);
-	if (map_validator(&map) != EXIT_SUCCESS)
+	if (map_validator(&map) != true)
 		return (EXIT_FAILURE);
 	read_map(av[1], &map);
 	free_map(map.map);

@@ -5,10 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/04 17:21:56 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/06 16:42:35 by jalves-c         ###   ########.fr       */
+/*   Created: 2023/05/06 18:27:08 by jalves-c          #+#    #+#             */
+/*   Updated: 2023/05/06 18:28:32 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
@@ -19,6 +20,7 @@
 # include <stdio.h>
 # include <X11/X.h>
 # include <X11/keysym.h>
+# include <stdbool.h>
 
 //WINDOW SIZE
 # define WINDOW_WIDTH 500
@@ -40,6 +42,8 @@ typedef struct s_map
 {
 	char 	**map;
 	char	*map_path;
+	int		*rows;
+	int		*cols;
 }			t_map;
 
 typedef struct s_rect
@@ -75,11 +79,11 @@ typedef struct s_data
 	int			cur_img;
 }				t_data;
 
-int	map_check(char *path_to_map);
-int	map_validator(t_map *map);
+int		map_check(char *path_to_map);
+bool	map_validator(t_map *map);
 void	free_map(char **map);
 void	map_error(t_map *map);
-int	arguments_check(int ac, char **av);
+bool	arguments_check(int ac, char **av);
 void	read_map(char *path_to_map, t_map *map);
 
 #endif
