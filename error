@@ -1,0 +1,26 @@
+src/so_long.c: In function ‘path_to_map_check’:
+src/so_long.c:16:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+   16 | {
+      | ^
+src/so_long.c:26:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+   26 | {
+      | ^
+src/so_long.c:42:1: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+   42 | {
+      | ^
+In file included from src/so_long.c:13:
+src/../include/so_long.h:83:6: error: old-style parameter declarations in prototyped function definition
+   83 | bool path_to_map_check(char *path_to_map)
+      |      ^~~~~~~~~~~~~~~~~
+src/so_long.c:53: error: expected ‘{’ at end of input
+   53 | }
+      | 
+In file included from src/so_long.c:13:
+src/../include/so_long.h:83:30: error: unused parameter ‘path_to_map’ [-Werror=unused-parameter]
+   83 | bool path_to_map_check(char *path_to_map)
+      |                        ~~~~~~^~~~~~~~~~~
+src/so_long.c:53: error: control reaches end of non-void function [-Werror=return-type]
+   53 | }
+      | 
+cc1: all warnings being treated as errors
+make: *** [Makefile:50: obj/so_long.o] Error 1

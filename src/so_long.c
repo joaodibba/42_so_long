@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 01:43:24 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/06 19:08:21 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/06 19:10:42 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ int	main(int ac, char **av)
 
 	if (arguments_check(ac, av) != true)
 		return (EXIT_FAILURE);
-	if (map_validator(&map) != true)
-		return (EXIT_FAILURE);
+	//if (map_validator(&map) != true)
+	//	return (EXIT_FAILURE);
 	read_map(av[1], &map);
 	free_map(map.map);
 	free(map.map_path);
