@@ -1,82 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 01:43:24 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/06 03:09:42 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/06 03:49:25 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-
-int	map_validator(t_map *map)
-{
-	(void)map;
-	return(0);
-}
-
-void	free_map(char **map)
-{
-	int	i;
-
-	if (!map)
-		return ;
-	i = 0;
-	while (map[i])
-		free(map[i++]);
-	free(map);
-}
-
-void	map_error(t_map *map)
-{
-	ft_printf("\033[0;31m [Error] <%s> IS NOT A VALID MAP.ber>.\n\033[0m", map->map_path);
-	free_map(map->map);
-	free(map->map_path);
-	exit(EXIT_FAILURE);
-}
-
-void	read_map(char *path_to_map, t_map *map)
-{
-	int		fd;
-	char	*line;
-	char	*text;
-	char	*temp;
-
-	fd = open(path_to_map, 0, O_RDONLY);
-	if (fd == -1)
-	{
-		ft_printf("\033[0;31m [Error] READING MAP <%s>.\n\033[0m", path_to_map);
-		exit(EXIT_FAILURE);
-	}
-	map->map_path = ft_strdup(path_to_map);
-	text = ft_strdup("");
-	while (get_next_line(fd) != NULL)
-	{
-		line = get_next_line(fd);
-		temp = ft_strjoin(text, line);
-		free(text);
-		free(line);
-		text = temp;
-	}
-	map->map = ft_split(text, '\n');
-	free(text);
-	if (map->map[0] == 0)
-		map_error(map);
-	close(fd);
-}
-
-int	map_check(char *path_to_map)
-{
-	size_t	len;
-
-	len = ft_strlen(path_to_map);
-	if (len < 5 || ft_strcmp(path_to_map + len - 4,".ber") != 0)
-		return (EXIT_FAILURE);
-	return (EXIT_SUCCESS);
-}
 
 int	arguments_check(int ac, char **av)
 {
@@ -93,8 +27,6 @@ int	arguments_check(int ac, char **av)
 	}
 	return (EXIT_SUCCESS);
 }
-
-
 
 int	main(int ac, char **av)
 {
