@@ -15,15 +15,10 @@ CC		=	@gcc
 FLAGS	=	-Wall -Wextra -Werror -fsanitize=address 
 LFT		=	libft/libft.a
 MLX 	=	mlx/libmlx.a
+LIB		=	-L ./libft -lft -L ./mlx -L/usr/X11/lib -lmlx -lXext -lX11
 INC		=	-I ./libft -I ./mlx
 SRC		=	$(wildcard src/*.c)
 OBJ		= 	$(patsubst src/%.c,obj/%.o,$(SRC))
-
-ifeq ($(UNAME), Darwin)
-	LIB		=	-L ./libft -lft -L ./mlx -framework OpenGL -framework AppKit
-else
-	LIB		=	-L ./libft -lft -L ./mlx -L/usr/X11/lib -lmlx -lXext -lX11
-endif
 
 #COLORS
 RED =		\033[0;31m
