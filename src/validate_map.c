@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 12:57:36 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/11 21:33:50 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/11 23:05:11 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ bool	map_count(t_map *map, char c)
 		return (++map->map_start);
 	return (false);
 }
-
 
 bool	map_content_is_valid(t_map *map)
 {
