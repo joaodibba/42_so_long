@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   verify_map.c                                       :+:      :+:    :+:   */
+/*   manage_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 03:45:59 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/06 19:07:02 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/11 19:21:52 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,38 +26,26 @@ void	free_map(char **map)
 
 void	map_error(t_map *map)
 {
-	ft_printf("\033[0;31m [Error] <%s> IS NOT A VALID MAP.ber>.\n\033[0m", map->map_path);
+	ft_printf(RED "[Error] <%s> IS NOT A VALID MAP.\n" \
+			RESET, map->map_path);
 	free_map(map->map);
 	free(map->map_path);
 	exit(EXIT_FAILURE);
 }
-	
-void get_map_dimensions(t_map *map)
-{
-	size_t	x;
-	size_t	y;
 
-	if(!map->map)
+t_map	duplicate_map(t_map map)
+{
+	t_map	map_copy;
+	size_t	i;
+
+	map_copy.map = malloc(map.rows * sizeof(char *));
+	i = 0;
+	while (i < map.rows)
 	{
-		map_error(map);
-		return ;
+		map_copy.map[i] = malloc(map.cols * sizeof(char));
+		ft_memcpy(map_copy.map[i], map.map[i], map.cols);
+		i++;
 	}
-	map->cols = ft_strlen(map->map[0]);
-	y = 0;
-	while(map->map[y])
-	{
-		if(map->map[y] != 0)
-			y++;
-	}
-	if(!y)
-		map->cols = y;
+	return (map_copy);
 }
 
-bool	map_validator(t_map *map)
-{
-	//get_map_dimensions(map);
-	ft_printf("colunas %d", map->cols);
-	ft_printf("linhas %d", map->rows);
-	(void)map;
-	return (true);
-}

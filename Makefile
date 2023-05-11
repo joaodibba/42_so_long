@@ -6,7 +6,7 @@
 #    By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/03 14:29:34 by jalves-c          #+#    #+#              #
-#    Updated: 2023/05/06 03:10:08 by jalves-c         ###   ########.fr        #
+#    Updated: 2023/05/11 19:20:47 by jalves-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ FLAGS	=	-Wall -Wextra -Werror -fsanitize=address
 LFT		=	libft/libft.a
 MLX 	=	minilibx-linux/libmlx.a
 INC		=	-I ./libft -I ./minilibx-linux
-LIB		=	-L ./libft -lft -L ./minilibx-linux -lmlx -lXext -lX11 -lm -lbsd
+LIB		=	-L ./libft -lft -L ./minilibx-linux -framework Cocoa -framework OpenGL -framework IOKit
 SRC		=	$(wildcard src/*.c)
 OBJ		= 	$(patsubst src/%.c,obj/%.o,$(SRC))
 
@@ -34,12 +34,12 @@ $(NAME):	$(OBJ)
 
 $(MLX):
 			@echo "$(YELLOW) [ .. ] | Compiling minilibx...$(RESET)"
-			@make -s -C minilibx-linux
+			@make -sC minilibx-linux
 			@echo "$(GREEN) [ OK ] | Minilibx ready!$(RESET)"
 
 $(LFT):		
 			@echo "$(YELLOW) [ .. ] | Compiling libft...$(RESET)"
-			@make -s -C libft
+			@make -sC libft
 			@echo "$(GREEN) [ OK ] | Libft ready!$(RESET)"
 
 obj:
