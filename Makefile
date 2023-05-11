@@ -6,7 +6,7 @@
 #    By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/03 14:29:34 by jalves-c          #+#    #+#              #
-#    Updated: 2023/05/11 23:08:21 by jalves-c         ###   ########.fr        #
+#    Updated: 2023/05/11 23:35:02 by jalves-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,14 @@ FLAGS	=	-Wall -Wextra -Werror -fsanitize=address
 LFT		=	libft/libft.a
 MLX 	=	mlx/libmlx.a
 INC		=	-I ./libft -I ./mlx
-LIB		=	-L ./libft -lft -L ./mlx -framework OpenGL -framework AppKit
 SRC		=	$(wildcard src/*.c)
 OBJ		= 	$(patsubst src/%.c,obj/%.o,$(SRC))
+
+ifeq ($(UNAME), Darwin)
+	LIB		=	-L ./libft -lft -L ./mlx -framework OpenGL -framework AppKit
+else
+	LIB		=	-L ./libft -lft -L ./mlx -L/usr/X11/lib -lmlx -lXext -lX11
+endif
 
 #COLORS
 RED =		\033[0;31m
@@ -30,9 +35,9 @@ RESET =		\033[0m
 all:		$(MLX) $(LFT) obj $(NAME)
 
 $(NAME):	$(OBJ)
-			@echo "[" "$(YELLOW)..$(RESET)" "] | Compiling so_long..."
+			@echo "[" "$(YELLOW)..$(RESET)" "] | Compiling $(NAME)..."
 			$(CC) $(FLAGS) -o $@ $^ $(LIB)
-			@echo "[" "$(GREEN)OK$(RESET)" "] | so_long ready!"
+			@echo "[" "$(GREEN)OK$(RESET)" "] | $(NAME) ready!"
 
 $(MLX):
 			@echo "[" "$(YELLOW)..$(RESET)" "] | Compiling minilibx..."
@@ -75,4 +80,3 @@ norm:
 
 
 .PHONY:		all clean fclean re
-
