@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 03:46:15 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/11 19:28:59 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/11 21:22:39 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,12 @@ bool	map_validator(t_map *map)
 	t_map	map_copy;
 
 	if (map_size_check(map) != true || map_is_rectangular(map) != true || \
-		map_content_is_valid(map) != true)
+		map_content_is_valid(map) != true || map_is_closed(map) != true)
 	{	
 		map_error(map);
 		return (false);
 	}
-		map_copy = duplicate_map(*map);
+	map_copy = duplicate_map(*map);
 	if (!map_copy.map)
 		return (false);
 	return (true);

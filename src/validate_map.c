@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 12:57:36 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/11 19:58:51 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/11 21:33:50 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,4 +90,26 @@ bool	map_content_is_valid(t_map *map)
 	}
 	return (map->wall > 0 && map->pc > 0 && map->collectible > 0 && \
 			map->empty_space > 0 && map->map_exit == 1 && map->map_start == 1);
+}
+
+bool	map_is_closed(t_map *map)
+{
+	size_t	x;
+	size_t	y;
+
+	x = 0;
+	y = 0;
+	while (y < map->rows)
+	{
+		if (map->map[y][x] != '1' || map->map[y][map->cols - 1] != '1')
+			return (false);
+		y++;
+	}
+	while (x < map->cols)
+	{
+		if (map->map[0][x] != '1' || map->map[map->rows - 1][x] != '1')
+			return (false);
+		x++;
+	}
+	return (true);
 }
