@@ -6,14 +6,14 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:27:08 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/11 19:26:04 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/11 21:00:42 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "../minilibx-linux/mlx.h"
+# include "../mlx/mlx.h"
 # include "../libft/libft.h"
 # include <stdlib.h>
 # include <stdio.h>

@@ -6,7 +6,7 @@
 #    By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/03 14:29:34 by jalves-c          #+#    #+#              #
-#    Updated: 2023/05/11 19:20:47 by jalves-c         ###   ########.fr        #
+#    Updated: 2023/05/11 21:01:09 by jalves-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,9 @@ NAME	=	so_long
 CC		=	@gcc
 FLAGS	=	-Wall -Wextra -Werror -fsanitize=address 
 LFT		=	libft/libft.a
-MLX 	=	minilibx-linux/libmlx.a
-INC		=	-I ./libft -I ./minilibx-linux
-LIB		=	-L ./libft -lft -L ./minilibx-linux -framework Cocoa -framework OpenGL -framework IOKit
+MLX 	=	mlx/libmlx.a
+INC		=	-I ./libft -I ./mlx
+LIB		=	-L ./libft -lft -L ./mlx -framework Cocoa -framework OpenGL -framework IOKit
 SRC		=	$(wildcard src/*.c)
 OBJ		= 	$(patsubst src/%.c,obj/%.o,$(SRC))
 
@@ -34,7 +34,7 @@ $(NAME):	$(OBJ)
 
 $(MLX):
 			@echo "$(YELLOW) [ .. ] | Compiling minilibx...$(RESET)"
-			@make -sC minilibx-linux
+			@make -sC mlx
 			@echo "$(GREEN) [ OK ] | Minilibx ready!$(RESET)"
 
 $(LFT):		
@@ -51,7 +51,7 @@ obj/%.o: 	src/%.c
 
 clean:
 			@make -sC libft clean
-			@make -sC minilibx-linux clean
+			@make -sC mlx clean
 			@rm -rf $(OBJ) obj
 			@echo "$(GREEN) [ OK ] | Object files removed.$(RESET)"
 
