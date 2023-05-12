@@ -42,6 +42,17 @@
 # define YELLOW "\e[0;33m"
 # define RESET "\e[0;37m"
 
+//MAP_CHAR_CODES
+# define EMPTY_SPACE '0'
+# define WALL '1'
+# define COLLECTIBLE 'C'
+# define MAP_EXIT 'E'
+# define MAP_START 'P'
+# define PC_UP 'W'
+# define PC_DOWN 'X'
+# define PC_LEFT 'Y'
+# define PC_RIGHT 'Z'
+
 typedef struct s_map
 {
 	char				**map;

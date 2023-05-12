@@ -49,17 +49,17 @@ bool	map_is_rectangular(t_map *map)
 
 bool	map_count(t_map *map, char c)
 {
-	if (c == '1')
+	if (c == WALL)
 		return (++map->wall);
-	else if (c == 'W' || c == 'X' || c == 'Y' || c == 'Z')
+	else if (c == PC_UP || c == PC_DOWN || c == PC_LEFT || c == PC_RIGHT)
 		return (++map->pc);
-	else if (c == 'C')
+	else if (c == COLLECTIBLE)
 		return (++map->collectible);
-	else if (c == '0')
+	else if (c == EMPTY_SPACE)
 		return (++map->empty_space);
-	else if (c == 'E')
+	else if (c == MAP_EXIT)
 		return (++map->map_exit);
-	else if (c == 'P')
+	else if (c == MAP_START)
 		return (++map->map_start);
 	return (false);
 }
