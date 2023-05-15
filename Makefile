@@ -63,14 +63,17 @@ fclean:		clean
 			@echo "[" "$(GREEN)OK$(RESET)" "] | Binary file removed."
 
 norm:
-	@echo "[" "$(YELLOW)..$(RESET)" "] | Running Norminette...$(RESET)"
-	@if norminette src include | grep -q "Error!"; then \
-		echo "[" "$(RED)!!$(RESET)" "] | Norminette found errors.$(RESET)"; \
-		norminette src include | awk '/Error!/ {print "[ " "$(RED)!!$(RESET)" " ] | " $$0}'; \
-	else \
-		echo "[" "$(GREEN)OK$(RESET)" "] | Norminette passed!"; \
-	fi
+			@echo "[" "$(YELLOW)..$(RESET)" "] | Running Norminette...$(RESET)"
+			@if norminette src include | grep -q "Error!"; then \
+				echo "[" "$(RED)!!$(RESET)" "] | Norminette found errors.$(RESET)"; \
+				norminette src include | awk '/Error!/ {print "[ " "$(RED)!!$(RESET)" " ] | " $$0}'; \
+			else \
+				echo "[" "$(GREEN)OK$(RESET)" "] | Norminette passed!"; \
+			fi
 
 re:			fclean norm all
+
+init:
+			@make re  -s && ./so_long maps/cluster1.ber
 
 .PHONY:		all clean fclean re

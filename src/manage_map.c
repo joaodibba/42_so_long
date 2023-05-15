@@ -26,8 +26,8 @@ void	free_map(char **map)
 
 void	map_error(t_map *map)
 {
-	ft_printf(RED "[Error] <%s> IS NOT A VALID MAP.\n" \
-			RESET, map->map_path);
+	ft_printf("[ " RED"!!"RESET " ] | "RED"%s"RESET \
+			" is not a valid map.\n", map->map_path);
 	free_map(map->map);
 	free(map->map_path);
 	exit(EXIT_FAILURE);

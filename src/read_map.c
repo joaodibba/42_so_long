@@ -20,7 +20,8 @@ void	read_map(const char *path_to_map, t_map *map)
 	fd = open(path_to_map, 0, O_RDONLY);
 	if (fd == -1)
 	{
-		ft_printf(RED "[Error] READING MAP <%s>.\n" RESET, path_to_map);
+		ft_printf("[ " RED "!!" RESET " ] | " "Error reading " \
+		RED "%s" RESET ".\n", path_to_map);
 		exit(EXIT_FAILURE);
 	}
 	map->map_path = ft_strdup(path_to_map);
@@ -30,7 +31,6 @@ void	read_map(const char *path_to_map, t_map *map)
 	map->map = ft_split(text, '\n');
 	if (text[0] == 0 || map->map[0] == 0)
 		map_error(map);
-	free(map->map_path);
 	free(text);
 	close(fd);
 }
@@ -67,8 +67,7 @@ bool	map_validator(t_map *map)
 	map_copy = duplicate_map(*map);
 	if (!map_copy.map)
 	{
-		free_map(map->map);
-		free(map->map_path);
+		map_error(&map_copy);
 		exit(EXIT_FAILURE);
 	}
 	if (map_copy.map)

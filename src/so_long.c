@@ -27,13 +27,14 @@ bool	arguments_check(int ac, char **av)
 	if (ac != 2)
 	{
 		(void)av;
-		ft_printf(RED "Error] ./so_long <PATH/TO/MAP.ber>.\n" RESET);
+		ft_printf("[ " RED "!!" RESET " ] | Wrong arguments number \"./so_long " \
+				RED "path/to/map.ber" RESET "\".\n");
 		return (false);
 	}
 	if (path_to_map_check(av[1]) == false)
 	{
-		ft_printf(RED "[Error] <%s> is not a valid <PATH/TO/MAP.ber>.\n" \
-				RESET, av[1]);
+		ft_printf("[ " RED"!!"RESET " ] | "RED"%s"RESET \
+				" is not a valid map.\n", av[1]);
 		return (false);
 	}
 	return (true);
@@ -48,6 +49,8 @@ int	main(int ac, char **av)
 	read_map(av[1], &map);
 	if (map_validator(&map) != true)
 		return (EXIT_FAILURE);
+	ft_printf("[ " GREEN "OK" RESET " ] | %s" \
+				" is a valid map!\n", av[1]);
 	free_map(map.map);
 	return (EXIT_SUCCESS);
 }
