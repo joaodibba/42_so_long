@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 03:45:59 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/11 22:44:28 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/15 01:32:49 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	free_map(char **map)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!map)
@@ -23,7 +23,6 @@ void	free_map(char **map)
 		free(map[i++]);
 	free(map);
 }
-
 
 void	map_error(t_map *map)
 {
