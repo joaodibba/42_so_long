@@ -14,15 +14,16 @@
 
 void	free_map(char **map)
 {
-	int	i;
+	int i;
 
+	i = 0;
 	if (!map)
 		return ;
-	i = 0;
 	while (map[i])
 		free(map[i++]);
 	free(map);
 }
+
 
 void	map_error(t_map *map)
 {
@@ -38,7 +39,7 @@ t_map	duplicate_map(t_map map)
 	t_map	map_copy;
 	size_t	i;
 
-	map_copy.map = malloc(map.rows * sizeof(char *));
+	map_copy.map = malloc((map.rows + 1) * sizeof(char *));
 	i = 0;
 	while (i < map.rows)
 	{
@@ -46,5 +47,6 @@ t_map	duplicate_map(t_map map)
 		ft_memcpy(map_copy.map[i], map.map[i], map.cols);
 		i++;
 	}
+	map_copy.map[i] = 0;
 	return (map_copy);
 }

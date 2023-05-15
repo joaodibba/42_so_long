@@ -12,7 +12,7 @@
 
 #include "../include/so_long.h"
 
-bool	path_to_map_check(char *path_to_map)
+bool	path_to_map_check(const char *path_to_map)
 {
 	size_t	len;
 

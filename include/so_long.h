@@ -68,8 +68,8 @@ typedef struct s_map
 }			t_map;
 
 bool	arguments_check(int ac, char **av);
-bool	path_to_map_check(char *path_to_map);
-void	read_map(char *path_to_map, t_map *map);
+bool	path_to_map_check(const char *path_to_map);
+void	read_map(const char *path_to_map, t_map *map);
 char	*read_map_content(int fd);
 bool	map_validator(t_map *map);
 void	free_map(char **map);
