@@ -62,8 +62,6 @@ fclean:		clean
 			@rm -rf $(NAME)
 			@echo "[" "$(GREEN)OK$(RESET)" "] | Binary file removed."
 
-re:			fclean norm all
-
 norm:
 	@echo "[" "$(YELLOW)..$(RESET)" "] | Running Norminette...$(RESET)"
 	@if norminette src include | grep -q "Error!"; then \
@@ -73,5 +71,6 @@ norm:
 		echo "[" "$(GREEN)OK$(RESET)" "] | Norminette passed!"; \
 	fi
 
+re:			fclean norm all
 
 .PHONY:		all clean fclean re
