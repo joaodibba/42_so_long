@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 03:46:15 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/15 01:37:01 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/18 19:55:53 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,21 @@ void	read_map(const char *path_to_map, t_map *map)
 
 	fd = open(path_to_map, 0, O_RDONLY);
 	if (fd == -1)
-	{
-		ft_printf("[ " RED "!!" RESET " ] | " "Error reading " \
-		RED "%s" RESET ".\n", path_to_map);
 		exit(EXIT_FAILURE);
-	}
 	map->map_path = ft_strdup(path_to_map);
-	if (map->map_path == NULL)
-		exit(EXIT_FAILURE);
+	if (!map->map_path)
+	{
+		free(map->map_path);
+		return ;
+	}
 	text = read_map_content(fd);
-	map->map = ft_split(text, '\n');
-	if (text[0] == 0 || map->map[0] == 0)
+	if (!text)
+	{
+		free(text);
+		return ;
+	}
+	map->grid = ft_split(text, '\n');
+	if (!map->grid[0])
 		map_error(map);
 	free(text);
 	close(fd);
@@ -46,31 +50,26 @@ char	*read_map_content(int fd)
 	while (line != NULL)
 	{
 		temp = ft_strjoin(text, line);
-		free(text);
+		ft_free_multiple(2, text, line);
 		text = temp;
-		free(line);
 		line = get_next_line(fd);
 	}
+
 	return (text);
 }
+//verificar se dá merda
+//map size check nao deve ser bool
 
-bool	map_validator(t_map *map)
-{
-	t_map	map_copy;
-
-	if (map_size_check(map) != true || map_is_rectangular(map) != true || \
-		map_content_is_valid(map) != true || map_is_closed(map) != true)
-	{
-		map_error(map);
+bool	map_validator(t_vars *vars)
+{	
+	ft_printf("[ " YELLOW ".." RESET \
+	" ] | validating map...\n");
+	if (map_size_check(&(vars->map)) != true || \
+		map_is_rectangular(&(vars->map)) != true || \
+		map_content_is_valid(&(vars->map)) != true || \
+		map_is_closed(&(vars->map)) != true)
 		return (false);
-	}
-	map_copy = duplicate_map(*map);
-	if (!map_copy.map)
-	{
-		map_error(&map_copy);
-		exit(EXIT_FAILURE);
-	}
-	if (map_copy.map)
-		free_map(map_copy.map);
+	/*if (map_valid_path_checker(vars, &(vars->map)) != true)
+		return (false);*/
 	return (true);
 }

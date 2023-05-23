@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 16:42:24 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/04 19:31:17 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/18 11:28:10 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ size_t	ft_strlen(const char *str)
 	size_t	i;
 
 	i = 0;
-	if(!str)
+	if (!str)
 		return (0);
 	while (str[i])
 		i++;

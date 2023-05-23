@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 01:43:24 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/11 23:05:32 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/23 17:56:20 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ bool	arguments_check(int ac, char **av)
 				RED "path/to/map.ber" RESET "\".\n");
 		return (false);
 	}
-	if (path_to_map_check(av[1]) == false)
+	if (path_to_map_check(av[1]) != true)
 	{
 		ft_printf("[ " RED"!!"RESET " ] | "RED"%s"RESET \
 				" is not a valid map.\n", av[1]);
@@ -42,15 +42,30 @@ bool	arguments_check(int ac, char **av)
 
 int	main(int ac, char **av)
 {
-	t_map	map;
+	t_vars	vars;
 
 	if (arguments_check(ac, av) != true)
 		return (EXIT_FAILURE);
-	read_map(av[1], &map);
-	if (map_validator(&map) != true)
+	read_map(av[1], &vars.map);
+	if (map_validator(&vars) != true)
+	{
+		ft_printf("[ " RED "!!" RESET " ] | %s" \
+				" is not a valid map.\n", av[1]);
 		return (EXIT_FAILURE);
+	}
 	ft_printf("[ " GREEN "OK" RESET " ] | %s" \
-				" is a valid map!\n", av[1]);
-	free_map(map.map);
+					" is a valid map!\n", av[1]);
+	vars.window_width = vars.map.cols * TILE_SIZE;
+	vars.window_height = vars.map.rows * TILE_SIZE;
+	vars.mlx_ptr = mlx_init();
+	vars.win_ptr = mlx_new_window(vars.mlx_ptr, vars.window_width, vars.window_height, "SO LONG");
+	vars.img.mlx_img = mlx_new_image(vars.mlx_ptr, vars.window_width, vars.window_height);
+	mlx_loop_hook(vars.mlx_ptr, &render, &vars);
+	mlx_hook(vars.win_ptr, KeyPress, KeyPressMask, &handle_keypress, &vars);
+	mlx_hook(vars.win_ptr, DestroyNotify, NoEventMask, &handle_keypress, &vars);
+	mlx_loop(vars.mlx_ptr);
+	free_win(&vars);
+	free_map(vars.map.grid);
+	free(vars.map.map_path);
 	return (EXIT_SUCCESS);
 }

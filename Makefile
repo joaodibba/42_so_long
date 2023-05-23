@@ -6,13 +6,13 @@
 #    By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/03 14:29:34 by jalves-c          #+#    #+#              #
-#    Updated: 2023/05/11 23:35:02 by jalves-c         ###   ########.fr        #
+#    Updated: 2023/05/18 15:55:04 by jalves-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	so_long
 CC		=	@gcc
-FLAGS	=	-Wall -Wextra -Werror -fsanitize=address 
+FLAGS	=	-fsanitize=address 
 LFT		=	libft/libft.a
 MLX 	=	mlx/libmlx.a
 LIB		=	-L ./libft -lft -L ./mlx -L/usr/X11/lib -lmlx -lXext -lX11
@@ -73,7 +73,15 @@ norm:
 
 re:			fclean norm all
 
-init:
+#maps
+bocal:
+			@make re  -s && ./so_long maps/bocal.ber
+
+cluster1:
 			@make re  -s && ./so_long maps/cluster1.ber
 
-.PHONY:		all clean fclean re
+cluster2:
+			@make re  -s && ./so_long maps/cluster2.ber
+
+
+.PHONY:		all clean fclean norm re cluster1 cluster2 cluster3 bocal

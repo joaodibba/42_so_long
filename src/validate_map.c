@@ -6,12 +6,13 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 12:57:36 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/11 23:05:11 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/18 15:25:26 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
+//isto não faz check do mapa e não deve ser boolean
 bool	map_size_check(t_map *map)
 {
 	size_t	x_size;
@@ -19,12 +20,12 @@ bool	map_size_check(t_map *map)
 
 	x_size = 0;
 	y_size = 0;
-	if (!map || !map->map)
+	if (!map || !map->grid)
 		return (false);
-	x_size = ft_strlen(map->map[0]);
+	x_size = ft_strlen(map->grid[0]);
 	if (x_size == 0)
 		return (false);
-	while (map->map[y_size] != 0)
+	while (map->grid[y_size] != 0)
 		y_size++;
 	if (y_size == 0)
 		return (false);
@@ -38,16 +39,16 @@ bool	map_is_rectangular(t_map *map)
 	size_t	y;
 
 	y = 0;
-	if (!map || !map->map || map->cols == map->rows)
+	if (!map || !map->grid || map->cols == map->rows)
 		return (false);
 	y = 0;
 	while (y < map->rows)
-		if (map->cols != ft_strlen(map->map[y++]))
+		if (map->cols != ft_strlen(map->grid[y++]))
 			return (false);
 	return (true);
 }
 
-bool	map_count(t_map *map, char c)
+bool	map_content_count(t_map *map, char c)
 {
 	if (c == WALL)
 		return (++map->wall);
@@ -76,12 +77,12 @@ bool	map_content_is_valid(t_map *map)
 	map->empty_space = 0;
 	map->map_exit = 0;
 	map->map_start = 0;
-	while (map->map[y])
+	while (map->grid[y])
 	{
 		x = 0;
-		while (map->map[y][x])
+		while (map->grid[y][x])
 		{
-			if (!map_count(map, map->map[y][x]))
+			if (!map_content_count(map, map->grid[y][x]))
 				return (false);
 			x++;
 		}
@@ -100,13 +101,13 @@ bool	map_is_closed(t_map *map)
 	y = 0;
 	while (y < map->rows)
 	{
-		if (map->map[y][x] != '1' || map->map[y][map->cols - 1] != '1')
+		if (map->grid[y][x] != '1' || map->grid[y][map->cols - 1] != '1')
 			return (false);
 		y++;
 	}
 	while (x < map->cols)
 	{
-		if (map->map[0][x] != '1' || map->map[map->rows - 1][x] != '1')
+		if (map->grid[0][x] != '1' || map->grid[map->rows - 1][x] != '1')
 			return (false);
 		x++;
 	}
