@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:56:42 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/18 19:30:05 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/23 21:41:08 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,20 @@ typedef struct s_img
 
 typedef struct s_vars
 {
-	void			*mlx_ptr;
-	void			*win_ptr;
+	void			*mlx;
+	void			*win;
+	void			*img;
 	t_map			map;
-	t_pos			player_pos;
 	t_flood			flood;
-	t_img			img;
+	t_img			wall;
+	t_img			pc_up;
+	t_img			pc_down;
+	t_img			pc_left;
+	t_img			pc_right;
+	t_img			collectible;
+	t_img			empty_space;
+	t_img			map_exit;
+	t_img			map_start;
 	unsigned int	window_height;
 	unsigned int	window_width;
 }				t_vars;

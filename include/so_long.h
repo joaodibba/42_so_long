@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:27:08 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/23 20:06:14 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/23 21:12:07 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,6 @@ int		window_width(void);
 int		window_height(void);
 int		handle_keys(int keysym, t_vars *vars);
 int		close_window(t_vars *vars);
-
-void	free_win(t_vars *vars);
 
 //structures
 t_vars	*vars(void);
