@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:39:20 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/18 18:36:31 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/23 20:20:50 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,10 @@
 
 //KEYCODES
 # define ESCAPE 65307
-#define ESCAPE 65307
-#define KeyPress 2
-#define KeyPressMask 1L << 0
-#define NoEventMask 0
-#define DestroyNotify 17
+# define KeyPress 2
+# define KeyPressMask 1L<<0
+# define NoEventMask 0
+# define DestroyNotify 17
 
 //MLX_COLORS
 # define RED_PIXEL 0XFF0000

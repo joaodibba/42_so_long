@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 03:46:15 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/18 19:55:53 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/23 20:14:34 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ char	*read_map_content(int fd)
 		text = temp;
 		line = get_next_line(fd);
 	}
-
 	return (text);
 }
 //verificar se dá merda
@@ -69,7 +68,7 @@ bool	map_validator(t_vars *vars)
 		map_content_is_valid(&(vars->map)) != true || \
 		map_is_closed(&(vars->map)) != true)
 		return (false);
-	/*if (map_valid_path_checker(vars, &(vars->map)) != true)
-		return (false);*/
 	return (true);
 }
+	/*if (map_valid_path_checker(vars, &(vars->map)) != true)
+		return (false);*/

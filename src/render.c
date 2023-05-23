@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 17:55:42 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/18 19:57:06 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/23 20:17:44 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int	render(t_vars *vars)
 
 	if (vars->win_ptr == NULL)
 		return (MLX_ERROR);
-	render_background(vars, &vars->img, WHITE_PIXEL);
-	// mlx_put_image_to_window(vars->mlx_ptr, vars->win_ptr, \
+	//render_background(vars, &vars->img, WHITE_PIXEL);
+	// mlx_put_image_to_window(vars->mlx_ptr, vars->win_ptr,
 	// 							vars->img.mlx_img, 0, 0);
 	return (0);
 }

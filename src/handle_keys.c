@@ -6,17 +6,21 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 18:39:05 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/23 17:35:53 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/23 20:11:52 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-int	handle_keypress(int keysym, t_vars *vars)
+int	handle_keys(int keysym, t_vars *vars)
 {
 	if (keysym == ESCAPE)
-	{	
-		free_win(vars);
-	}
-	return (0);
+		close_window(vars);
+	return (EXIT_SUCCESS);
+}
+
+int	close_window(t_vars *vars)
+{
+	mlx_destroy_window(vars->mlx_ptr, vars->win_ptr);
+	exit (0);
 }

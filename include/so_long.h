@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:27:08 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/18 19:10:26 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/23 20:06:14 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,14 @@ void	print2darray(char **arr, int rows);
 int		render(t_vars *vars);
 void	render_background(t_vars *vars, t_img *img, int color);
 void	img_pix_put(t_img *img, int x, int y, int color);
-int		handle_keypress(int keysym, t_vars *vars);
-void	free_win(t_vars *vars);
 
 //window management
 int		window_width(void);
 int		window_height(void);
+int		handle_keys(int keysym, t_vars *vars);
+int		close_window(t_vars *vars);
+
+void	free_win(t_vars *vars);
 
 //structures
 t_vars	*vars(void);
