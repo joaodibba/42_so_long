@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:27:08 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/24 21:10:46 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/24 21:42:44 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,7 @@ void	draw_map(t_vars *vars);
 //structures
 t_vars	*vars(void);
 t_map	*map(void);
+
+void	put_sprite(t_vars *vars, t_pos pos, char c);
 
 #endif

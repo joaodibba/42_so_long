@@ -6,13 +6,13 @@
 #    By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/03 14:29:34 by jalves-c          #+#    #+#              #
-#    Updated: 2023/05/18 15:55:04 by jalves-c         ###   ########.fr        #
+#    Updated: 2023/05/24 21:42:24 by jalves-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	so_long
 CC		=	@gcc
-FLAGS	=	-fsanitize=address 
+FLAGS	=	-g -fsanitize=address 
 LFT		=	libft/libft.a
 MLX 	=	mlx/libmlx.a
 LIB		=	-L ./libft -lft -L ./mlx -L/usr/X11/lib -lmlx -lXext -lX11
