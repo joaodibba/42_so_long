@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 20:47:06 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/24 21:47:09 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/24 21:51:48 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	draw_map(t_vars *vars)
 
 	pos.y = 0;
 	pos.x = 0;
-	
 	while (pos.y < vars->map.rows)
 	{
 		while (pos.x < vars->map.cols)
