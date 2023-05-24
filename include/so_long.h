@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:27:08 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/23 21:12:07 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/24 21:10:46 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ bool	map_is_closed(t_map *map);
 bool	map_content_count(t_map *map, char c);
 void	assign_map_to_vars(t_map *map, t_vars *vars);
 void	print2darray(char **arr, int rows);
-int		render(t_vars *vars);
 void	render_background(t_vars *vars, t_img *img, int color);
 void	img_pix_put(t_img *img, int x, int y, int color);
 
@@ -45,6 +44,12 @@ int		window_width(void);
 int		window_height(void);
 int		handle_keys(int keysym, t_vars *vars);
 int		close_window(t_vars *vars);
+int		render(t_vars *vars);
+
+//graphics
+void	load_sprites(t_vars	*vars);
+void	draw_map(t_vars *vars);
+
 
 //structures
 t_vars	*vars(void);

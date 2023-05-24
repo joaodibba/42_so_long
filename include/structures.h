@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:56:42 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/23 21:41:08 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/24 20:59:19 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct s_map
 
 typedef struct s_img
 {
-	void	*mlx_img;
+	void	*img;
 	char	*addr;
 	int		bpp;
 	int		line_len;
@@ -56,14 +56,14 @@ typedef struct s_vars
 	t_map			map;
 	t_flood			flood;
 	t_img			wall;
+	t_img			empty_space;
+	t_img			map_exit;
+	t_img			map_start;
 	t_img			pc_up;
 	t_img			pc_down;
 	t_img			pc_left;
 	t_img			pc_right;
 	t_img			collectible;
-	t_img			empty_space;
-	t_img			map_exit;
-	t_img			map_start;
 	unsigned int	window_height;
 	unsigned int	window_width;
 }				t_vars;
