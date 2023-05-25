@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 01:43:24 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/24 21:16:48 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/25 04:44:27 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,11 @@ int	main(int ac, char **av)
 		return (EXIT_FAILURE);
 	read_map(av[1], &vars.map);
 	if (map_validator(&vars) != true)
-	{
-		ft_printf("[ " RED "!!" RESET " ] | %s" \
-												" is not a valid map.\n", av[1]);
-		return (EXIT_FAILURE);
-	}
+		map_error(&vars.map);
 	ft_printf("[ " GREEN "OK" RESET " ] | %s" \
 												" is a valid map!\n", av[1]);
-	vars.window_width = vars.map.cols * TILE_SIZE;
-	vars.window_height = vars.map.rows * TILE_SIZE;
+	vars.window_width = vars.map.width * TILE_SIZE;
+	vars.window_height = vars.map.height * TILE_SIZE;
 	vars.mlx = mlx_init();
 	vars.win = mlx_new_window(vars.mlx, \
 				vars.window_width, vars.window_height, "LA PISCINE");

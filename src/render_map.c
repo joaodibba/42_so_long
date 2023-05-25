@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_map.c                                         :+:      :+:    :+:   */
+/*   render_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 20:47:06 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/24 21:51:48 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/25 04:51:22 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	draw_map(t_vars *vars)
+void	render_map(t_vars *vars)
 {
 	t_pos	pos;
 
 	pos.y = 0;
 	pos.x = 0;
-	while (pos.y < vars->map.rows)
+	while (pos.y < vars->map.height)
 	{
-		while (pos.x < vars->map.cols)
+		while (pos.x < vars->map.width)
 		{
 			if (vars->map.grid[pos.y][pos.x] == WALL)
 				put_sprite(vars, pos, WALL);
@@ -40,6 +40,8 @@ void	draw_map(t_vars *vars)
 				put_sprite(vars, pos, PC_LEFT);
 			else if (vars->map.grid[pos.y][pos.x] == PC_RIGHT)
 				put_sprite(vars, pos, PC_RIGHT);
+			else if (vars->map.grid[pos.y][pos.x] == CONE)
+				put_sprite(vars, pos, CONE);
 			pos.x++;
 		}
 		pos.x = 0;
@@ -50,21 +52,33 @@ void	draw_map(t_vars *vars)
 void	put_sprite(t_vars *vars, t_pos pos, char c)
 {
 	if (c == WALL)
-		mlx_put_image_to_window(vars->mlx, vars->win,vars->wall.img, pos.x * TILE_SIZE, pos.y * TILE_SIZE);
+		mlx_put_image_to_window(vars->mlx, vars->win, \
+		vars->wall.img, pos.x * TILE_SIZE, pos.y * TILE_SIZE);
 	else if (c == EMPTY_SPACE)
-		mlx_put_image_to_window(vars->mlx, vars->win,vars->empty_space.img, pos.x * TILE_SIZE, pos.y * TILE_SIZE);
+		mlx_put_image_to_window(vars->mlx, vars->win, \
+		vars->empty_space.img, pos.x * TILE_SIZE, pos.y * TILE_SIZE);
 	else if (c == COLLECTIBLE)
-		mlx_put_image_to_window(vars->mlx, vars->win,vars->collectible.img, pos.x * TILE_SIZE, pos.y * TILE_SIZE);
+		mlx_put_image_to_window(vars->mlx, vars->win, \
+		vars->collectible.img, pos.x * TILE_SIZE, pos.y * TILE_SIZE);
 	else if (c == MAP_EXIT)
-		mlx_put_image_to_window(vars->mlx, vars->win,vars->map_exit.img, pos.x * TILE_SIZE, pos.y * TILE_SIZE);
+		mlx_put_image_to_window(vars->mlx, vars->win, \
+		vars->map_exit.img, pos.x * TILE_SIZE, pos.y * TILE_SIZE);
 	else if (c == MAP_START)
-		mlx_put_image_to_window(vars->mlx, vars->win,vars->map_start.img, pos.x * TILE_SIZE, pos.y * TILE_SIZE);
+		mlx_put_image_to_window(vars->mlx, vars->win, \
+		vars->map_start.img, pos.x * TILE_SIZE, pos.y * TILE_SIZE);
 	else if (c == PC_UP)
-		mlx_put_image_to_window(vars->mlx, vars->win,vars->pc_up.img, pos.x * TILE_SIZE, pos.y * TILE_SIZE);
+		mlx_put_image_to_window(vars->mlx, vars->win, \
+		vars->pc_up.img, pos.x * TILE_SIZE, pos.y * TILE_SIZE);
 	else if (c == PC_DOWN)
-		mlx_put_image_to_window(vars->mlx, vars->win,vars->pc_down.img, pos.x * TILE_SIZE, pos.y * TILE_SIZE);
+		mlx_put_image_to_window(vars->mlx, vars->win, \
+		vars->pc_down.img, pos.x * TILE_SIZE, pos.y * TILE_SIZE);
 	else if (c == PC_LEFT)
-		mlx_put_image_to_window(vars->mlx, vars->win,vars->pc_left.img, pos.x * TILE_SIZE, pos.y * TILE_SIZE);
+		mlx_put_image_to_window(vars->mlx, vars->win, \
+		vars->pc_left.img, pos.x * TILE_SIZE, pos.y * TILE_SIZE);
 	else if (c == PC_RIGHT)
-		mlx_put_image_to_window(vars->mlx, vars->win,vars->pc_right.img, pos.x * TILE_SIZE, pos.y * TILE_SIZE);
+		mlx_put_image_to_window(vars->mlx, vars->win, \
+		vars->pc_right.img, pos.x * TILE_SIZE, pos.y * TILE_SIZE);
+	else if (c == CONE)
+		mlx_put_image_to_window(vars->mlx, vars->win, \
+		vars->cone.img, pos.x * TILE_SIZE, pos.y * TILE_SIZE);
 }

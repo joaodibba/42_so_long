@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:27:08 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/24 21:42:44 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/25 01:45:19 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,13 @@ int		render(t_vars *vars);
 
 //graphics
 void	load_sprites(t_vars	*vars);
-void	draw_map(t_vars *vars);
+void	render_map(t_vars *vars);
+void	put_sprite(t_vars *vars, t_pos pos, char c);
 
 
 //structures
 t_vars	*vars(void);
 t_map	*map(void);
 
-void	put_sprite(t_vars *vars, t_pos pos, char c);
 
 #endif

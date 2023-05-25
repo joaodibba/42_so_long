@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:39:20 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/24 22:19:36 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/25 01:23:48 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,6 @@
 # define PC_DOWN 'X'
 # define PC_LEFT 'Y'
 # define PC_RIGHT 'Z'
+# define CONE 'V'
 
 #endif
