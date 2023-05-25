@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 20:47:06 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/25 04:51:22 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/25 19:42:13 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,36 +49,55 @@ void	render_map(t_vars *vars)
 	}	
 }
 
+void	copy_image(t_img img, t_pos pos, t_img *final_img)
+{
+	int x;
+	int y;
+	unsigned int color;
+
+	y = 0;
+	color = 0;
+	while (y < 32)
+	{
+		x = 0;
+		while (x < 32)
+		{
+			color = my_mlx_pixel_get(&img, x, y);
+			if (color)
+				my_mlx_pixel_put(final_img, (pos.x * TILE_SIZE) + x, (pos.y * TILE_SIZE) + y, (int)color);
+			x++;
+		}
+		y++;
+	}
+}
+
 void	put_sprite(t_vars *vars, t_pos pos, char c)
 {
 	if (c == WALL)
-		mlx_put_image_to_window(vars->mlx, vars->win, \
-		vars->wall.img, pos.x * TILE_SIZE, pos.y * TILE_SIZE);
-	else if (c == EMPTY_SPACE)
-		mlx_put_image_to_window(vars->mlx, vars->win, \
-		vars->empty_space.img, pos.x * TILE_SIZE, pos.y * TILE_SIZE);
-	else if (c == COLLECTIBLE)
-		mlx_put_image_to_window(vars->mlx, vars->win, \
-		vars->collectible.img, pos.x * TILE_SIZE, pos.y * TILE_SIZE);
-	else if (c == MAP_EXIT)
-		mlx_put_image_to_window(vars->mlx, vars->win, \
-		vars->map_exit.img, pos.x * TILE_SIZE, pos.y * TILE_SIZE);
-	else if (c == MAP_START)
-		mlx_put_image_to_window(vars->mlx, vars->win, \
-		vars->map_start.img, pos.x * TILE_SIZE, pos.y * TILE_SIZE);
-	else if (c == PC_UP)
-		mlx_put_image_to_window(vars->mlx, vars->win, \
-		vars->pc_up.img, pos.x * TILE_SIZE, pos.y * TILE_SIZE);
-	else if (c == PC_DOWN)
-		mlx_put_image_to_window(vars->mlx, vars->win, \
-		vars->pc_down.img, pos.x * TILE_SIZE, pos.y * TILE_SIZE);
-	else if (c == PC_LEFT)
-		mlx_put_image_to_window(vars->mlx, vars->win, \
-		vars->pc_left.img, pos.x * TILE_SIZE, pos.y * TILE_SIZE);
-	else if (c == PC_RIGHT)
-		mlx_put_image_to_window(vars->mlx, vars->win, \
-		vars->pc_right.img, pos.x * TILE_SIZE, pos.y * TILE_SIZE);
-	else if (c == CONE)
-		mlx_put_image_to_window(vars->mlx, vars->win, \
-		vars->cone.img, pos.x * TILE_SIZE, pos.y * TILE_SIZE);
+		copy_image(vars->wall, pos, &vars->final_image);
+	else if (c != WALL)
+		copy_image(vars->empty_space, pos, &vars->final_image);
+	// else if (c == COLLECTIBLE)
+	// 	mlx_put_image_to_window(vars->mlx, vars->win, \
+	// 	vars->collectible.img, pos.x * TILE_SIZE, pos.y * TILE_SIZE);
+	// else if (c == MAP_EXIT)
+	// 	mlx_put_image_to_window(vars->mlx, vars->win, \
+	// 	vars->map_exit.img, pos.x * TILE_SIZE, pos.y * TILE_SIZE);
+	// else if (c == MAP_START)
+	// 	mlx_put_image_to_window(vars->mlx, vars->win, \
+	// 	vars->map_start.img, pos.x * TILE_SIZE, pos.y * TILE_SIZE);
+	// else if (c == PC_UP)
+	// 	mlx_put_image_to_window(vars->mlx, vars->win, \
+	// 	vars->pc_up.img, pos.x * TILE_SIZE, pos.y * TILE_SIZE);
+	// else if (c == PC_DOWN)
+	// 	mlx_put_image_to_window(vars->mlx, vars->win, \
+	// 	vars->pc_down.img, pos.x * TILE_SIZE, pos.y * TILE_SIZE);
+	// else if (c == PC_LEFT)
+	// 	mlx_put_image_to_window(vars->mlx, vars->win, \
+	// 	vars->pc_left.img, pos.x * TILE_SIZE, pos.y * TILE_SIZE);
+	// else if (c == PC_RIGHT)
+	// 	mlx_put_image_to_window(vars->mlx, vars->win, \
+	// 	vars->pc_right.img, pos.x * TILE_SIZE, pos.y * TILE_SIZE);
+	if (c == CONE)
+		copy_image(vars->cone, pos, &vars->final_image);
 }

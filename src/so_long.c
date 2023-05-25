@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 01:43:24 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/25 04:44:27 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/25 19:36:49 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,9 @@ int	main(int ac, char **av)
 	vars.mlx = mlx_init();
 	vars.win = mlx_new_window(vars.mlx, \
 				vars.window_width, vars.window_height, "LA PISCINE");
-	vars.img = mlx_new_image(vars.mlx, \
+	vars.final_image.img = mlx_new_image(vars.mlx, \
 							vars.window_width, vars.window_height);
+	vars.final_image.addr = mlx_get_data_addr(vars.final_image.img, &vars.final_image.bpp, &vars.final_image.line_len, &vars.final_image.endian);
 	load_sprites(&vars);
 	mlx_hook(vars.win, KeyPress, KeyPressMask, &handle_keys, &vars);
 	mlx_hook(vars.win, DestroyNotify, KeyPressMask, &close_window, &vars);

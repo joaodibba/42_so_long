@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:27:08 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/25 01:45:19 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/25 19:17:12 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,8 @@ void	put_sprite(t_vars *vars, t_pos pos, char c);
 t_vars	*vars(void);
 t_map	*map(void);
 
+
+unsigned int	my_mlx_pixel_get(t_img *img, int x, int y);
+void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 
 #endif
