@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 20:47:06 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/25 20:08:16 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/25 22:42:43 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,10 @@ void	copy_image(t_img img, t_pos pos, t_img *final_img)
 		while (x < 32)
 		{
 			color = my_mlx_pixel_get(&img, x, y);
-			// if (x == 0 && y == 0)
-			// 	printf("%u\n", color);
+
 			if (color && color != 4278190080)
-				my_mlx_pixel_put(final_img, (pos.x * TILE_SIZE) + x, (pos.y * TILE_SIZE) + y, (int)color);
+				my_mlx_pixel_put(final_img, (pos.x * TILE_SIZE) + x, \
+				(pos.y * TILE_SIZE) + y, (int)color);
 			x++;
 		}
 		y++;
@@ -75,31 +75,24 @@ void	copy_image(t_img img, t_pos pos, t_img *final_img)
 
 void	put_sprite(t_vars *vars, t_pos pos, char c)
 {
+	if (c != PC_DOWN && c != PC_LEFT && c != PC_RIGHT && c != PC_UP)
+		copy_image(vars->empty_space, pos, &vars->final_image);
 	if (c == WALL)
-	 	copy_image(vars->wall, pos, &vars->final_image);
-	else if (c != WALL)
-	 	copy_image(vars->empty_space, pos, &vars->final_image);
-	else if (c == COLLECTIBLE)
-		mlx_put_image_to_window(vars->mlx, vars->win, \
-		vars->collectible.img, pos.x * TILE_SIZE, pos.y * TILE_SIZE);
-	else if (c == MAP_EXIT)
-		mlx_put_image_to_window(vars->mlx, vars->win, \
-		vars->map_exit.img, pos.x * TILE_SIZE, pos.y * TILE_SIZE);
-	else if (c == MAP_START)
-		mlx_put_image_to_window(vars->mlx, vars->win, \
-		vars->map_start.img, pos.x * TILE_SIZE, pos.y * TILE_SIZE);
-	else if (c == PC_UP)
-		mlx_put_image_to_window(vars->mlx, vars->win, \
-		vars->pc_up.img, pos.x * TILE_SIZE, pos.y * TILE_SIZE);
-	else if (c == PC_DOWN)
-		mlx_put_image_to_window(vars->mlx, vars->win, \
-		vars->pc_down.img, pos.x * TILE_SIZE, pos.y * TILE_SIZE);
-	else if (c == PC_LEFT)
-		mlx_put_image_to_window(vars->mlx, vars->win, \
-		vars->pc_left.img, pos.x * TILE_SIZE, pos.y * TILE_SIZE);
-	else if (c == PC_RIGHT)
-		mlx_put_image_to_window(vars->mlx, vars->win, \
-		vars->pc_right.img, pos.x * TILE_SIZE, pos.y * TILE_SIZE);
+		copy_image(vars->wall, pos, &vars->final_image);
+	if (c == COLLECTIBLE)
+		copy_image(vars->collectible, pos, &vars->final_image);
+	if (c == MAP_EXIT)
+		copy_image(vars->map_exit, pos, &vars->final_image);
+	if (c == MAP_START)
+		copy_image(vars->map_start, pos, &vars->final_image);
+	if (c == PC_UP)
+		copy_image(vars->pc_up, pos, &vars->final_image);
+	if (c == PC_DOWN)
+		copy_image(vars->pc_down, pos, &vars->final_image);
+	if (c == PC_LEFT)
+		copy_image(vars->pc_left, pos, &vars->final_image);
+	if (c == PC_RIGHT)
+		copy_image(vars->pc_right, pos, &vars->final_image);
 	if (c == CONE)
 		copy_image(vars->cone, pos, &vars->final_image);
 }
