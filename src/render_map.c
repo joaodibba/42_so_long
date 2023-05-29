@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 20:47:06 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/25 22:42:43 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/29 21:56:27 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ void	render_map(t_vars *vars)
 
 void	copy_image(t_img img, t_pos pos, t_img *final_img)
 {
-	int x;
-	int y;
-	unsigned int color;
+	int				x;
+	int				y;
+	unsigned int	color;
 
 	y = 0;
 	color = 0;
@@ -62,10 +62,9 @@ void	copy_image(t_img img, t_pos pos, t_img *final_img)
 		x = 0;
 		while (x < 32)
 		{
-			color = my_mlx_pixel_get(&img, x, y);
-
+			color = get_pixel(&img, x, y);
 			if (color && color != 4278190080)
-				my_mlx_pixel_put(final_img, (pos.x * TILE_SIZE) + x, \
+				put_pixel(final_img, (pos.x * TILE_SIZE) + x, \
 				(pos.y * TILE_SIZE) + y, (int)color);
 			x++;
 		}
