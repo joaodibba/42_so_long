@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:27:08 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/29 22:06:37 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/29 23:24:35 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ char			*read_map_content(int fd);
 t_map			duplicate_map(t_map map);
 void			map_error(t_map *map);
 bool			map_validator(t_vars *vars);
-void			free_map(char **map);
 bool			map_size_check(t_map *map);
 bool			map_is_rectangular(t_map *map);
 bool			map_content_is_valid(t_map *map);

@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 03:46:15 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/25 18:35:52 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/29 23:26:39 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,13 @@ char	*read_map_content(int fd)
 	}
 	return (text);
 }
+
 //verificar se dá merda
 //map size check nao deve ser bool
-
 bool	map_validator(t_vars *vars)
 {	
 	ft_printf("[ " YELLOW ".." RESET \
-	" ] | validating map...\n");
+	" ] | Validating map...\n");
 	if (map_size_check(&(vars->map)) != true || \
 		map_is_rectangular(&(vars->map)) != true || \
 		map_content_is_valid(&(vars->map)) != true || \

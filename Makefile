@@ -6,7 +6,7 @@
 #    By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/03 14:29:34 by jalves-c          #+#    #+#              #
-#    Updated: 2023/05/29 22:17:38 by jalves-c         ###   ########.fr        #
+#    Updated: 2023/05/29 22:26:23 by jalves-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,16 +63,16 @@ fclean:		clean
 
 norm:
 		@echo "[" "$(YELLOW)..$(RESET)" "] | Running Norminette...$(RESET)"
-		@if norminette src include | grep -q "Error!"; then \
+		@if norminette src include/macros.h iclude/so_long.h include/structures.h | grep -q "Error!"; then \
 			echo "[" "$(RED)!!$(RESET)" "] | Norminette found errors.$(RESET)"; \
-			norminette src include | awk '/Error!/ {print "[ " "$(RED)!!$(RESET)" " ] | " $$0}'; \
+			norminette src include/macros.h iclude/so_long.h include/structures.h | awk '/Error!/ {print "[ " "$(RED)!!$(RESET)" " ] | " $$0}'; \
 		else \
 			echo "[" "$(GREEN)OK$(RESET)" "] | Norminette passed!"; \
 		fi
 
 re:			fclean norm all
 
-# maps
+# MAPS
 bocal:
 		@make re  -s && ./so_long maps/bocal.ber
 
