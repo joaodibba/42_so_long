@@ -6,7 +6,7 @@
 #    By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/03 14:29:34 by jalves-c          #+#    #+#              #
-#    Updated: 2023/05/30 15:48:39 by jalves-c         ###   ########.fr        #
+#    Updated: 2023/05/30 15:49:13 by jalves-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,6 @@ NAME	=	so_long
 CC		=	@gcc
 FLAGS	=	-g -fsanitize=address
 LFT		=	include/libft/libft.a
-LIB		=	-L ./include/libft -lft -L ./include/mlx -l mlx -framework OpenGL -framework AppKit
 INC		=	-I ./include/libft -I ./include/mlx
 SRC		=	$(wildcard src/*.c)
 OBJ		= 	$(patsubst src/%.c,obj/%.o,$(SRC))
