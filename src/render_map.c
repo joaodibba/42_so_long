@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 20:47:06 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/29 23:10:28 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/30 18:40:18 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	render_map(t_vars *vars)
 
 	pos.y = 0;
 	pos.x = 0;
-	while (pos.y < vars->map.height)
+	while ((size_t)pos.y < vars->map.height)
 	{
-		while (pos.x < vars->map.width)
+		while ((size_t)pos.x < vars->map.width)
 		{
 			if (vars->map.grid[pos.y][pos.x] == WALL)
 				put_sprite(vars, pos, WALL);
