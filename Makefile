@@ -6,7 +6,7 @@
 #    By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/03 14:29:34 by jalves-c          #+#    #+#              #
-#    Updated: 2023/05/29 22:26:23 by jalves-c         ###   ########.fr        #
+#    Updated: 2023/05/30 15:48:39 by jalves-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,11 +14,18 @@ NAME	=	so_long
 CC		=	@gcc
 FLAGS	=	-g -fsanitize=address
 LFT		=	include/libft/libft.a
-MLX 	=	include/mlx/libmlx.a
-LIB		=	-L ./include/libft -lft -L ./include/mlx -L/usr/X11/lib -lmlx -lXext -lX11
+LIB		=	-L ./include/libft -lft -L ./include/mlx -l mlx -framework OpenGL -framework AppKit
 INC		=	-I ./include/libft -I ./include/mlx
 SRC		=	$(wildcard src/*.c)
 OBJ		= 	$(patsubst src/%.c,obj/%.o,$(SRC))
+
+ifeq ($(OS), Darwin)
+	MLX		= ./miniLibX_X11/libmlx.a
+	MLX_LNK	= -L $(MLX) -l mlx -framework OpenGL -framework AppKit
+else
+	MLX 	=	include/mlx/libmlx.a
+	LIB		=	-L ./include/libft -lft -L ./include/mlx -L/usr/X11/lib -lmlx -lXext -lX11
+endif
 
 # COLORS
 RED =		\033[0;31m
