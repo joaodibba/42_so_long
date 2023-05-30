@@ -6,14 +6,15 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:27:08 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/29 23:24:35 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/30 16:17:39 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "../mlx/mlx.h"
+# include "mlx/mlx.h"
+# include "mlx_macos/mlx.h"
 # include "../libft/libft.h"
 # include "structures.h"
 # include "macros.h"

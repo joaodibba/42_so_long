@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 01:43:24 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/29 23:24:26 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/30 16:07:31 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ int	main(int ac, char **av)
 	vars.mlx = mlx_init();
 	vars.win = mlx_new_window(vars.mlx, \
 				vars.window_width, vars.window_height, "LA PISCINE");
+	if (!vars.win)
+		exit(1);
 	vars.final_image.img = mlx_new_image(vars.mlx, \
 							vars.window_width, vars.window_height);
 	vars.final_image.addr = mlx_get_data_addr(vars.final_image.img, \
