@@ -5,32 +5,33 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/05/03 14:29:34 by jalves-c          #+#    #+#              #
-#    Updated: 2023/05/31 12:16:21 by jalves-c         ###   ########.fr        #
+#    Created: 2023/05/31 14:30:52 by jalves-c          #+#    #+#              #
+#    Updated: 2023/05/31 14:30:54 by jalves-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = so_long
-CC = @gcc
+NAME  = so_long
+OS    = $(shell uname)
+CC    = @gcc
 FLAGS = -g -fsanitize=address
-LFT = include/libft/libft.a
-INC = -I./include/libft -I./include/mlx
-SRC = $(wildcard src/*.c)
-OBJ = $(patsubst src/%.c, obj/%.o, $(SRC))
+LFT   = include/libft/libft.a
+INC   = -I./include/libft -I./include/mlx -I./include/mlx_macos
+SRC   = $(wildcard src/*.c)
+OBJ   = $(patsubst src/%.c, obj/%.o, $(SRC))
 
-ifeq ($(shell uname -s), Darwin)
-	MLX = ./include/mlx_macos/libmlx.a
-	LIB = -L./include/mlx_macos -lmlx -framework OpenGL -framework AppKit
+ifeq ($(OS), Darwin)
+    MLX = ./include/mlx_macos/libmlx.a
+    LIB = -L./include/libft -lft -L./include/mlx_macos -l mlx -framework OpenGL -framework AppKit
 else
-	MLX = include/mlx/libmlx.a
-	LIB = -L./include/libft -lft -L./include/mlx -lmlx -lXext -lX11
+    MLX = include/mlx/libmlx.a
+    LIB = -L./include/libft -lft -L./include/mlx -l mlx -lXext -lX11
 endif
 
 # COLORS
-RED = \033[0;31m
-GREEN = \033[0;32m
-YELLOW = \033[0;33m
-RESET = \033[0m
+RED     = \033[0;31m
+GREEN   = \033[0;32m
+YELLOW  = \033[0;33m
+RESET   = \033[0m
 
 all: $(MLX) $(LFT) obj $(NAME)
 
@@ -41,7 +42,7 @@ $(NAME): $(OBJ)
 
 $(MLX):
 	@echo "[" "$(YELLOW)..$(RESET)" "] | Compiling minilibx..."
-	@make -sC include/mlx > /dev/null 2>&1
+	@make -sC include/mlx_macos > /dev/null 2>&1
 	@echo "[" "$(GREEN)OK$(RESET)" "] | Minilibx ready!"
 
 $(LFT):
@@ -59,7 +60,7 @@ obj/%.o: src/%.c
 clean:
 	@echo "[" "$(YELLOW)..$(RESET)" "] | Removing object files..."
 	@make -sC include/libft clean
-	@make -sC include/mlx clean > /dev/null
+	@make -sC include/mlx_macos clean > /dev/null
 	@rm -rf $(OBJ) obj
 	@echo "[" "$(GREEN)OK$(RESET)" "] | Object files removed."
 
@@ -72,10 +73,10 @@ fclean: clean
 norm:
 	@echo "[" "$(YELLOW)..$(RESET)" "] | Running Norminette...$(RESET)"
 	@if norminette src include/macros.h iclude/so_long.h include/structures.h | grep -q "Error!"; then \
-		echo "[" "$(RED)!!$(RESET)" "] | Norminette found errors.$(RESET)"; \
-		norminette src include/macros.h iclude/so_long.h include/structures.h | awk '/Error!/ {print "[ " "$(RED)!!$(RESET)" " ] | " $$0}'; \
+	    echo "[" "$(RED)!!$(RESET)" "] | Norminette found errors.$(RESET)"; \
+	    norminette src include/macros.h iclude/so_long.h include/structures.h | awk '/Error!/ {print "[ " "$(RED)!!$(RESET)" " ] | " $$0}'; \
 	else \
-		echo "[" "$(GREEN)OK$(RESET)" "] | Norminette passed!"; \
+	    echo "[" "$(GREEN)OK$(RESET)" "] | Norminette passed!"; \
 	fi
 
 re: fclean norm all
