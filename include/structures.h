@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:56:42 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/31 12:57:06 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/25 19:15:16 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,21 +50,12 @@ typedef struct s_img
 	int		height;
 }			t_img;
 
-typedef struct s_keys
-{
-	int		up;
-	int		down;
-	int		left;
-	int		right;
-}			t_keys;
-
 typedef struct s_vars
 {
 	void			*mlx;
 	void			*win;
 	void			*img;
-	unsigned int	window_height;
-	unsigned int	window_width;
+	t_img			final_image;
 	t_map			map;
 	t_flood			flood;
 	t_img			wall;
@@ -77,8 +68,8 @@ typedef struct s_vars
 	t_img			pc_right;
 	t_img			collectible;
 	t_img			cone;
-	t_img			final_image;
-	t_keys			keys;
+	unsigned int	window_height;
+	unsigned int	window_width;
 }				t_vars;
 
 #endif

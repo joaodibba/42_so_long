@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 12:57:36 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/31 13:11:36 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/25 04:49:48 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,14 +116,3 @@ bool	map_is_closed(t_map *map)
 	}
 	return (true);
 }
-
-/*
-bool	map_valid_path_checker(t_vars *vars, t_map	*map)
-{
-	t_map	map_copy;
-
-	map_copy = duplicate_map(vars->map);
-	if (map_copy.grid)
-		ft_free_matrix(map_copy.grid);
-	//print2darray(map->grid, vars->map.rows);
-}*/

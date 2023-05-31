@@ -6,7 +6,11 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:27:08 by jalves-c          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/05/31 15:21:47 by jalves-c         ###   ########.fr       */
+=======
+/*   Updated: 2023/05/30 16:17:39 by jalves-c         ###   ########.fr       */
+>>>>>>> parent of 0520e9d... upgraded key handler
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,45 +27,40 @@
 # include <stdbool.h>
 # include <X11/keysym.h>
 
-// arguments management
+//arguments management
 bool			arguments_check(int ac, char **av);
 bool			path_to_map_check(const char *path_to_map);
 
-// map management
+//map management
 void			read_map(const char *path_to_map, t_map *map);
 char			*read_map_content(int fd);
 t_map			duplicate_map(t_map map);
 void			map_error(t_map *map);
-bool			map_content_count(t_map *map, char c);
-void			assign_map_to_vars(t_map *map, t_vars *vars);
-
-// map validation
 bool			map_validator(t_vars *vars);
 bool			map_size_check(t_map *map);
 bool			map_is_rectangular(t_map *map);
-bool			map_is_closed(t_map *map);
 bool			map_content_is_valid(t_map *map);
+bool			map_is_closed(t_map *map);
+bool			map_content_count(t_map *map, char c);
+void			assign_map_to_vars(t_map *map, t_vars *vars);
 
-// helper functions
 void			print2darray(char **arr, int rows);
-int				handle_keys(int key, t_vars *vars);
-int				handle_key_release(int key, t_vars *vars);
 
-// window management
+//window management
 int				window_width(void);
 int				window_height(void);
 int				handle_keys(int keysym, t_vars *vars);
 int				close_window(t_vars *vars);
+int				render(t_vars *vars);
 
-// graphics
+//graphics
 void			load_sprites(t_vars	*vars);
 unsigned int	get_pixel(t_img *img, int x, int y);
 void			put_pixel(t_img *img, int x, int y, int color);
-int				render(t_vars *vars);
 void			render_map(t_vars *vars);
 void			put_sprite(t_vars *vars, t_pos pos, char c);
 
-// structures initialization
+//structures
 t_vars			*vars(void);
 t_map			*map(void);
 

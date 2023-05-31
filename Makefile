@@ -5,8 +5,13 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
+<<<<<<< HEAD
 #    Created: 2023/05/31 14:30:52 by jalves-c          #+#    #+#              #
 #    Updated: 2023/05/31 15:40:43 by jalves-c         ###   ########.fr        #
+=======
+#    Created: 2023/05/03 14:29:34 by jalves-c          #+#    #+#              #
+#    Updated: 2023/05/30 16:16:53 by jalves-c         ###   ########.fr        #
+>>>>>>> parent of 0520e9d... upgraded key handler
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,14 +63,12 @@ obj/%.o: src/%.c
 	$(CC) $(FLAGS) $(INC) -c $< -o $@
 
 clean:
-	@echo "[" "$(YELLOW)..$(RESET)" "] | Removing object files..."
 	@make -sC include/libft clean
 	@make -sC include/mlx_macos clean > /dev/null
 	@rm -rf $(OBJ) obj
 	@echo "[" "$(GREEN)OK$(RESET)" "] | Object files removed."
 
 fclean: clean
-	@echo "[" "$(YELLOW)..$(RESET)" "] | Removing binary files..."
 	@make -sC include/libft fclean
 	@rm -rf $(NAME)
 	@echo "[" "$(GREEN)OK$(RESET)" "] | Binary file removed."
