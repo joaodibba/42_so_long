@@ -1,25 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   manage_map.c                                       :+:      :+:    :+:   */
+/*   helper_functions.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 03:45:59 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/29 23:25:12 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/31 12:24:47 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-
-void	map_error(t_map *map)
-{
-	ft_printf("[ " RED"!!"RESET " ] | " \
-			RED"%s"RESET" is not a valid map.\n", map->map_path);
-	ft_free_matrix(map->grid);
-	free(map->map_path);
-	exit(EXIT_FAILURE);
-}
 
 t_map	duplicate_map(t_map map)
 {
@@ -55,4 +46,10 @@ void	print2darray(char **arr, int rows)
 		i++;
 	}
 	printf("\n");
+}
+
+int	close_window(t_vars *vars)
+{
+	mlx_destroy_window(vars->mlx, vars->win);
+	exit (0);
 }

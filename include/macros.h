@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:39:20 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/25 01:23:48 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/31 12:52:59 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,22 @@
 # define EXIT_FAILURE	1
 # define EXIT_SUCCESS	0
 
-//KEYCODES
+//KEY CODES
 # define ESCAPE 65307
+# define UP 65362
+# define DOWN 65364
+# define LEFT 65361
+# define RIGHT 65363
+# define W 119
+# define S 115
+# define A 97
+# define D 100
+
+// MLX MACROS
 # define KeyPress 2
+# define KeyRelease 3
 # define KeyPressMask 1L<<0
+# define KeyReleaseMask 1L<<1
 # define NoEventMask 0
 # define DestroyNotify 17
 

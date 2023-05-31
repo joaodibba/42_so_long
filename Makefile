@@ -6,7 +6,7 @@
 #    By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/03 14:29:34 by jalves-c          #+#    #+#              #
-#    Updated: 2023/05/30 16:16:53 by jalves-c         ###   ########.fr        #
+#    Updated: 2023/05/31 12:16:21 by jalves-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,12 +57,14 @@ obj/%.o: src/%.c
 	$(CC) $(FLAGS) $(INC) -c $< -o $@
 
 clean:
+	@echo "[" "$(YELLOW)..$(RESET)" "] | Removing object files..."
 	@make -sC include/libft clean
 	@make -sC include/mlx clean > /dev/null
 	@rm -rf $(OBJ) obj
 	@echo "[" "$(GREEN)OK$(RESET)" "] | Object files removed."
 
 fclean: clean
+	@echo "[" "$(YELLOW)..$(RESET)" "] | Removing binary files..."
 	@make -sC include/libft fclean
 	@rm -rf $(NAME)
 	@echo "[" "$(GREEN)OK$(RESET)" "] | Binary file removed."

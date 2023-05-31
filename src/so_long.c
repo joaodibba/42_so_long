@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 01:43:24 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/30 16:07:31 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/31 13:08:52 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int	main(int ac, char **av)
 	&vars.final_image.endian);
 	load_sprites(&vars);
 	mlx_hook(vars.win, KeyPress, KeyPressMask, &handle_keys, &vars);
+	mlx_hook(vars.win, KeyRelease, KeyReleaseMask, &handle_key_release, &vars);
 	mlx_hook(vars.win, DestroyNotify, KeyPressMask, &close_window, &vars);
 	mlx_loop_hook(vars.mlx, &render, &vars);
 	mlx_loop(vars.mlx);
