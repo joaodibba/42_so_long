@@ -7,11 +7,15 @@
 #                                                 +#+#+#+#+#+   +#+            #
 <<<<<<< HEAD
 #    Created: 2023/05/31 14:30:52 by jalves-c          #+#    #+#              #
+<<<<<<< HEAD
 #    Updated: 2023/05/31 15:40:43 by jalves-c         ###   ########.fr        #
 =======
 #    Created: 2023/05/03 14:29:34 by jalves-c          #+#    #+#              #
 #    Updated: 2023/05/30 16:16:53 by jalves-c         ###   ########.fr        #
 >>>>>>> parent of 0520e9d... upgraded key handler
+=======
+#    Updated: 2023/05/31 15:25:19 by jalves-c         ###   ########.fr        #
+>>>>>>> ee72ff50e7bd171108da1293c018e650c5f39fc5
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,16 +24,23 @@ OS    = $(shell uname)
 CC    = @gcc
 FLAGS = -g -fsanitize=address
 LFT   = include/libft/libft.a
-INC   = -I./include/libft -I./include/mlx -I./include/mlx_macos
+INC   = -I./include/libft -I./include/mlx -I./include/mlx_macos -I/opt/X11/include
 SRC   = $(wildcard src/*.c)
 OBJ   = $(patsubst src/%.c, obj/%.o, $(SRC))
 
 ifeq ($(OS), Darwin)
     MLX = ./include/mlx_macos/libmlx.a
+<<<<<<< HEAD
     LIB = -L./include/libft -lft -L./include/mlx_macos -lmlx -framework OpenGL -framework AppKit
 else
     MLX = include/mlx/libmlx.a
     LIB = -L./include/libft -lft -L./include/mlx -lmlx -lXext -lX11
+=======
+    LIB = -L./include/libft -lft -L./include/mlx_macos -l mlx -framework OpenGL -framework AppKit -L/opt/X11/lib -lX11
+else
+    MLX = include/mlx/libmlx.a
+    LIB = -L./include/libft -lft -L./include/mlx -l mlx -lXext -lX11 -L/opt/X11/lib -lX11
+>>>>>>> ee72ff50e7bd171108da1293c018e650c5f39fc5
 endif
 
 # COLORS
