@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:27:08 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/31 12:53:36 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/31 15:21:47 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <stdbool.h>
+# include <X11/keysym.h>
 
 // arguments management
 bool			arguments_check(int ac, char **av);

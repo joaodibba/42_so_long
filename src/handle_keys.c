@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 18:39:05 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/31 13:10:45 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/05/31 15:19:16 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	handle_keys(int key, t_vars *vars)
 {
-	if (key == ESCAPE)
+	if (key == XK_Escape)
 		close_window(vars);
 	if (key == UP || key == W)
 		vars->keys.up = 1;
