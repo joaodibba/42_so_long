@@ -3,7 +3,7 @@ OS    = $(shell uname)
 CC    = @gcc
 FLAGS = -g -fsanitize=address
 LFT   = include/libft/libft.a
-INC   = -I./include/libft -I./include/mlx -I./include/mlx_macos -I/opt/X11/include
+INC   = -I./include/libft -I./include/mlx -I./include/mlx_macos
 SRC   = $(wildcard src/*.c)
 OBJ   = $(patsubst src/%.c, obj/%.o, $(SRC))
 
@@ -13,6 +13,7 @@ ifeq ($(OS), Darwin)
 else
     MLX = include/mlx/libmlx.a
     LIB = -L./include/libft -lft -L./include/mlx -lmlx -lXext -lX11
+endif
 
 # COLORS
 RED     = \033[0;31m
