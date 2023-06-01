@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 03:45:59 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/01 17:16:08 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/01 17:28:12 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,24 +57,25 @@ void	print2darray(char **arr, int rows)
 	printf("\n");
 }
 
-void find_map_start(t_map *map, t_player *player)
+void find_map_start(t_vars *vars)
 {
     int x;
     int y;
 
-    x = 0;
-    while (x < map->height - 1)
+    y = 0;
+    while (vars->map.grid[y])
     {
-        y = 0;
-        while (y < map->width - 1)
+        x = 0;
+        while (vars->map.grid[y][x])
         {
-            if (map->grid[y][x] == MAP_START)
+            if (vars->map.grid[y][x] == MAP_START)
             {
-                player->pos.y = y;
-                player->pos.x = x;
+                vars->player.pos.y = y;
+                vars->player.pos.x = x;
+				break ;
             }
-            y++;
+            x++;
         }
-        x++;
+        y++;
     }
 }

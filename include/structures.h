@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:56:42 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/01 14:17:28 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/01 18:09:48 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,10 @@ typedef struct s_map
 
 typedef struct s_move
 {
-	bool			up;		
-	bool			down;
-	bool			left;
-	bool			right;
+	int			up;		
+	int			down;
+	int			left;
+	int			right;
 }					t_move;
 
 typedef struct s_player

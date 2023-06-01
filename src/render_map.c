@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 20:47:06 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/01 16:45:40 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/01 18:13:00 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 void	render_map(t_vars *vars)
 {
-	static t_pos	pos;
-
+	t_pos	pos;
+	
+	pos.y = 0;
 	while ((size_t)pos.y < vars->map.height)
 	{
+		pos.x = 0;
 		while ((size_t)pos.x < vars->map.width)
 		{
 			put_sprite(vars, pos, EMPTY_SPACE);
