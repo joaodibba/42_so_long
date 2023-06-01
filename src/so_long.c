@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 01:43:24 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/01 16:08:17 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/01 17:13:54 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,9 @@ int	main(int ac, char **av)
 	vars.final_image.addr = mlx_get_data_addr(vars.final_image.img, \
 	&vars.final_image.bpp, &vars.final_image.line_len, \
 	&vars.final_image.endian);
+	find_map_start(&vars.map, &vars.player);
+	ft_printf("y: %d\n", &vars.player.pos.y);
+	ft_printf("x: %d\n", &vars.player.pos.x);
 	load_sprites(&vars);
 	mlx_hook(vars.win, KeyPress, KeyPressMask, &handle_key, &vars);
 	mlx_hook(vars.win, KeyRelease, KeyReleaseMask, &handle_key_release, &vars);

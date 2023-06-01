@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:27:08 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/01 16:26:27 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/01 17:12:34 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,6 @@ t_map			*map(void);
 
 void	render_player(t_vars *vars);
 void	copy_image(t_img img, t_pos pos, t_img *final_img);
+void	find_map_start(t_map *map, t_player *player);
 
 #endif

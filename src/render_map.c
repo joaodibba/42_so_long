@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 20:47:06 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/01 14:18:54 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/01 16:45:40 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ void	render_map(t_vars *vars)
 				put_sprite(vars, pos, COLLECTIBLE);
 			else if (vars->map.grid[pos.y][pos.x] == MAP_EXIT)
 				put_sprite(vars, pos, MAP_EXIT);
-			else if (vars->map.grid[pos.y][pos.x] == MAP_START)
-				put_sprite(vars, pos, MAP_START);
 			else if (vars->map.grid[pos.y][pos.x] == PC_UP)
 				put_sprite(vars, pos, PC_UP);
 			else if (vars->map.grid[pos.y][pos.x] == PC_DOWN)

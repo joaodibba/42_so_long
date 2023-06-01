@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/06/01 16:38:57 by jalves-c          #+#    #+#              #
+#    Updated: 2023/06/01 16:58:12 by jalves-c         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME  = so_long
 OS    = $(shell uname)
 CC    = @gcc
@@ -9,9 +21,11 @@ OBJ   = $(patsubst src/%.c, obj/%.o, $(SRC))
 
 ifeq ($(OS), Darwin)
     MLX = ./include/mlx_macos/libmlx.a
+	INC_MLX = include/mlx_macos
     LIB = -L./include/libft -lft -L./include/mlx_macos -lmlx -framework OpenGL -framework AppKit
 else
     MLX = include/mlx/libmlx.a
+	INC_MLX = include/mlx
     LIB = -L./include/libft -lft -L./include/mlx -lmlx -lXext -lX11
 endif
 
@@ -30,7 +44,7 @@ $(NAME): $(OBJ)
 
 $(MLX):
 	@echo "[" "$(YELLOW)..$(RESET)" "] | Compiling minilibx..."
-	@make -sC include/mlx_macos > /dev/null 2>&1
+	@make -sC $(INC_MLX) > /dev/null 2>&1
 	@echo "[" "$(GREEN)OK$(RESET)" "] | Minilibx ready!"
 
 $(LFT):
@@ -46,12 +60,14 @@ obj/%.o: src/%.c
 	$(CC) $(FLAGS) $(INC) -c $< -o $@
 
 clean:
+	@echo "[" "$(YELLOW)..$(RESET)" "] | Removing object files...$(RESET)"
 	@make -sC include/libft clean
-	@make -sC include/mlx_macos clean > /dev/null
+	@make -sC $(INC_MLX) clean > /dev/null
 	@rm -rf $(OBJ) obj
 	@echo "[" "$(GREEN)OK$(RESET)" "] | Object files removed."
 
 fclean: clean
+	@echo "[" "$(YELLOW)..$(RESET)" "] | Removing binary files...$(RESET)"
 	@make -sC include/libft fclean
 	@rm -rf $(NAME)
 	@echo "[" "$(GREEN)OK$(RESET)" "] | Binary file removed."
