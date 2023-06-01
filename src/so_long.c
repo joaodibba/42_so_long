@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 01:43:24 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/30 16:07:31 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/01 01:00:55 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	main(int ac, char **av)
 		map_error(&vars.map);
 	ft_printf("[ " GREEN "OK" RESET " ] | %s" \
 												" is a valid map!\n", av[1]);
-	vars.window_width = vars.map.width * TILE_SIZE;
+	vars.window_width = vars.map.width * TILE_SIZE ;
 	vars.window_height = vars.map.height * TILE_SIZE;
 	vars.mlx = mlx_init();
 	vars.win = mlx_new_window(vars.mlx, \

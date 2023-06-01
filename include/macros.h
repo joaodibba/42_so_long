@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:39:20 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/25 01:23:48 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/01 00:10:36 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define MACROS_H
 
 //WINDOW SIZE
-# define TILE_SIZE 32
+# define TILE_SIZE 64
 
 //ERROR CODES
 # define MLX_ERROR		1

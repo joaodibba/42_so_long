@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pixel_management.c                                 :+:      :+:    :+:   */
+/*   pixel.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 19:05:34 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/29 21:59:33 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/01 00:10:42 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,3 +27,4 @@ unsigned int	get_pixel(t_img *img, int x, int y)
 	dst = img->addr + (y * img->line_len + x * (img->bpp / 8));
 	return (*(unsigned int *)dst);
 }
+

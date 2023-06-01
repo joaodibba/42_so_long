@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 20:47:06 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/30 18:40:18 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/01 01:01:07 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,10 @@ void	copy_image(t_img img, t_pos pos, t_img *final_img)
 
 	y = 0;
 	color = 0;
-	while (y < 32)
+	while (y < TILE_SIZE)
 	{
 		x = 0;
-		while (x < 32)
+		while (x < TILE_SIZE)
 		{
 			color = get_pixel(&img, x, y);
 			if (color && color != 4278190080)
