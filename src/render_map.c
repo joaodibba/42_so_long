@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 20:47:06 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/01 18:13:00 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/01 19:05:25 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,21 @@ void	render_map(t_vars *vars)
 		while ((size_t)pos.x < vars->map.width)
 		{
 			put_sprite(vars, pos, EMPTY_SPACE);
-			if (vars->map.grid[pos.y][pos.x] == WALL)
+			if (vars->map.grid[(int)pos.y][(int)pos.x] == WALL)
 				put_sprite(vars, pos, WALL);
-			else if (vars->map.grid[pos.y][pos.x] == COLLECTIBLE)
+			else if (vars->map.grid[(int)pos.y][(int)pos.x] == COLLECTIBLE)
 				put_sprite(vars, pos, COLLECTIBLE);
-			else if (vars->map.grid[pos.y][pos.x] == MAP_EXIT)
+			else if (vars->map.grid[(int)pos.y][(int)pos.x] == MAP_EXIT)
 				put_sprite(vars, pos, MAP_EXIT);
-			else if (vars->map.grid[pos.y][pos.x] == PC_UP)
+			else if (vars->map.grid[(int)pos.y][(int)pos.x] == PC_UP)
 				put_sprite(vars, pos, PC_UP);
-			else if (vars->map.grid[pos.y][pos.x] == PC_DOWN)
+			else if (vars->map.grid[(int)pos.y][(int)pos.x] == PC_DOWN)
 				put_sprite(vars, pos, PC_DOWN);
-			else if (vars->map.grid[pos.y][pos.x] == PC_LEFT)
+			else if (vars->map.grid[(int)pos.y][(int)pos.x] == PC_LEFT)
 				put_sprite(vars, pos, PC_LEFT);
-			else if (vars->map.grid[pos.y][pos.x] == PC_RIGHT)
+			else if (vars->map.grid[(int)pos.y][(int)pos.x] == PC_RIGHT)
 				put_sprite(vars, pos, PC_RIGHT);
-			else if (vars->map.grid[pos.y][pos.x] == CONE)
+			else if (vars->map.grid[(int)pos.y][(int)pos.x] == CONE)
 				put_sprite(vars, pos, CONE);
 			pos.x++;
 		}

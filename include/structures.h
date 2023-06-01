@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:56:42 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/01 18:09:48 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/01 19:34:41 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 typedef struct s_pos
 {
-	int				x;
-	int				y;
+	int			x;
+	int			y;
 }				t_pos;
 
 typedef struct s_flood
