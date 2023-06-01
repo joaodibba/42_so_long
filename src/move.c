@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 13:17:25 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/01 18:38:10 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/01 18:44:05 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	move(t_map *map, t_player *player, int x , int y)
 {
-	if (map->grid[player->pos.y + y][player->pos.x + x] == WALL \
-		map->grid[player->pos.y + y][player->pos.x + x] == PC_UP \
-		map->grid[player->pos.y + y][player->pos.x + x] == PC_DOWN \
-		map->grid[player->pos.y + y][player->pos.x + x] == PC_LEFT \
-		map->grid[player->pos.y + y][player->pos.x + x] == PC_RIGHT)
+	if (map->grid[player->pos.y + y][player->pos.x + x] == WALL || \
+			map->grid[player->pos.y + y][player->pos.x + x] == PC_UP || \
+			map->grid[player->pos.y + y][player->pos.x + x] == PC_DOWN || \
+			map->grid[player->pos.y + y][player->pos.x + x] == PC_LEFT || \
+			map->grid[player->pos.y + y][player->pos.x + x] == PC_RIGHT)
 			return ;
 	if (map->grid[player->pos.y + y][player->pos.x + x] == COLLECTIBLE)
 		map->collectible_count--;
