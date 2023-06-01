@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 20:47:06 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/01 01:01:07 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/01 14:18:54 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,15 @@
 
 void	render_map(t_vars *vars)
 {
-	t_pos	pos;
+	static t_pos	pos;
 
-	pos.y = 0;
-	pos.x = 0;
 	while ((size_t)pos.y < vars->map.height)
 	{
 		while ((size_t)pos.x < vars->map.width)
 		{
+			put_sprite(vars, pos, EMPTY_SPACE);
 			if (vars->map.grid[pos.y][pos.x] == WALL)
 				put_sprite(vars, pos, WALL);
-			else if (vars->map.grid[pos.y][pos.x] == EMPTY_SPACE)
-				put_sprite(vars, pos, EMPTY_SPACE);
 			else if (vars->map.grid[pos.y][pos.x] == COLLECTIBLE)
 				put_sprite(vars, pos, COLLECTIBLE);
 			else if (vars->map.grid[pos.y][pos.x] == MAP_EXIT)
@@ -74,24 +71,23 @@ void	copy_image(t_img img, t_pos pos, t_img *final_img)
 
 void	put_sprite(t_vars *vars, t_pos pos, char c)
 {
-	if (c != PC_DOWN && c != PC_LEFT && c != PC_RIGHT && c != PC_UP)
-		copy_image(vars->empty_space, pos, &vars->final_image);
+	copy_image(vars->map.empty_space, pos, &vars->final_image);
 	if (c == WALL)
-		copy_image(vars->wall, pos, &vars->final_image);
+		copy_image(vars->map.wall, pos, &vars->final_image);
 	if (c == COLLECTIBLE)
-		copy_image(vars->collectible, pos, &vars->final_image);
+		copy_image(vars->map.collectible, pos, &vars->final_image);
 	if (c == MAP_EXIT)
-		copy_image(vars->map_exit, pos, &vars->final_image);
+		copy_image(vars->map.map_exit, pos, &vars->final_image);
 	if (c == MAP_START)
-		copy_image(vars->map_start, pos, &vars->final_image);
+		copy_image(vars->map.map_start, pos, &vars->final_image);
 	if (c == PC_UP)
-		copy_image(vars->pc_up, pos, &vars->final_image);
+		copy_image(vars->map.pc_up, pos, &vars->final_image);
 	if (c == PC_DOWN)
-		copy_image(vars->pc_down, pos, &vars->final_image);
+		copy_image(vars->map.pc_down, pos, &vars->final_image);
 	if (c == PC_LEFT)
-		copy_image(vars->pc_left, pos, &vars->final_image);
+		copy_image(vars->map.pc_left, pos, &vars->final_image);
 	if (c == PC_RIGHT)
-		copy_image(vars->pc_right, pos, &vars->final_image);
+		copy_image(vars->map.pc_right, pos, &vars->final_image);
 	if (c == CONE)
-		copy_image(vars->cone, pos, &vars->final_image);
+		copy_image(vars->map.cone, pos, &vars->final_image);
 }

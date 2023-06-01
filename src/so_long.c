@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 01:43:24 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/01 01:00:55 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/01 16:08:17 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,20 +51,21 @@ int	main(int ac, char **av)
 		map_error(&vars.map);
 	ft_printf("[ " GREEN "OK" RESET " ] | %s" \
 												" is a valid map!\n", av[1]);
-	vars.window_width = vars.map.width * TILE_SIZE ;
-	vars.window_height = vars.map.height * TILE_SIZE;
+	vars.win_width = vars.map.width * TILE_SIZE ;
+	vars.win_height = vars.map.height * TILE_SIZE;
 	vars.mlx = mlx_init();
 	vars.win = mlx_new_window(vars.mlx, \
-				vars.window_width, vars.window_height, "LA PISCINE");
+				vars.win_width, vars.win_height, "LA PISCINE");
 	if (!vars.win)
 		exit(1);
 	vars.final_image.img = mlx_new_image(vars.mlx, \
-							vars.window_width, vars.window_height);
+							vars.win_width, vars.win_height);
 	vars.final_image.addr = mlx_get_data_addr(vars.final_image.img, \
 	&vars.final_image.bpp, &vars.final_image.line_len, \
 	&vars.final_image.endian);
 	load_sprites(&vars);
-	mlx_hook(vars.win, KeyPress, KeyPressMask, &handle_keys, &vars);
+	mlx_hook(vars.win, KeyPress, KeyPressMask, &handle_key, &vars);
+	mlx_hook(vars.win, KeyRelease, KeyReleaseMask, &handle_key_release, &vars);
 	mlx_hook(vars.win, DestroyNotify, KeyPressMask, &close_window, &vars);
 	mlx_loop_hook(vars.mlx, &render, &vars);
 	mlx_loop(vars.mlx);

@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_valid_path_checker.c                           :+:      :+:    :+:   */
+/*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/15 21:46:49 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/29 23:24:46 by jalves-c         ###   ########.fr       */
+/*   Created: 2023/06/01 13:17:25 by jalves-c          #+#    #+#             */
+/*   Updated: 2023/06/01 15:38:32 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-/*
-bool	map_valid_path_checker(t_vars *vars, t_map	*map)
+void	render_player(t_vars *vars)
 {
-	t_map	map_copy;
+	static t_pos	pos;
 
-	map_copy = duplicate_map(vars->map);
-	if (map_copy.grid)
-		ft_free_matrix(map_copy.grid);
-	//print2darray(map->grid, vars->map.rows);
-}*/
+	while ((size_t)pos.y < vars->map.height)
+	{
+		while ((size_t)pos.x < vars->map.width)
+		{
+			if (vars->map.grid[pos.y][pos.x] == MAP_START)
+			{
+				copy_image(vars->map.map_start, pos, &vars->final_image);
+			}
+			pos.x++;
+		}
+		pos.x = 0;
+		pos.y++;
+	}	
+}

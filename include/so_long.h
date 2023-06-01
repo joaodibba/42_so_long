@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:27:08 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/30 16:17:39 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/01 16:26:27 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ void			print2darray(char **arr, int rows);
 //window management
 int				window_width(void);
 int				window_height(void);
-int				handle_keys(int keysym, t_vars *vars);
+int				handle_key(int key, t_vars *vars);
+int				handle_key_release(int key, t_vars *vars);
 int				close_window(t_vars *vars);
 int				render(t_vars *vars);
 
@@ -58,5 +59,8 @@ void			put_sprite(t_vars *vars, t_pos pos, char c);
 //structures
 t_vars			*vars(void);
 t_map			*map(void);
+
+void	render_player(t_vars *vars);
+void	copy_image(t_img img, t_pos pos, t_img *final_img);
 
 #endif
