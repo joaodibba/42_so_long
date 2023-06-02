@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:56:42 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/01 19:34:41 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/02 01:30:54 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct s_map
 	unsigned int	empty_space_count;
 	unsigned int	map_exit_count;
 	unsigned int	map_start_count;
+	unsigned int	cone_count;
 	t_img			wall;
 	t_img			empty_space;
 	t_img			map_exit;
@@ -58,6 +59,7 @@ typedef struct s_map
 	t_img			pc_right;
 	t_img			collectible;
 	t_img			cone;
+	t_pos			cone_pos;
 }				t_map;
 
 typedef struct s_move
@@ -73,6 +75,7 @@ typedef struct s_player
 	t_img			img;
 	t_pos			pos;
 	t_move			move;
+	unsigned int	collectible_count;
 }					t_player;
 typedef struct s_vars
 {

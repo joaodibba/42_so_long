@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 20:47:06 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/01 19:05:25 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/02 00:13:20 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	render_map(t_vars *vars)
 {
 	t_pos	pos;
-	
+
 	pos.y = 0;
 	while ((size_t)pos.y < vars->map.height)
 	{

@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 03:45:59 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/01 17:28:12 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/02 00:37:17 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,29 @@ void find_map_start(t_vars *vars)
             {
                 vars->player.pos.y = y;
                 vars->player.pos.x = x;
+				break ;
+            }
+            x++;
+        }
+        y++;
+    }
+}
+
+void find_map_cone(t_vars *vars)
+{
+    int x;
+    int y;
+
+    y = 0;
+    while (vars->map.grid[y])
+    {
+        x = 0;
+        while (vars->map.grid[y][x])
+        {
+            if (vars->map.grid[y][x] == CONE)
+            {
+                vars->map.cone_pos.y = y;
+                vars->map.cone_pos.x = x;
 				break ;
             }
             x++;
