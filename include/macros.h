@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:39:20 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/01 17:48:42 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/05 15:17:47 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@
 # define RED "\e[0;31m"
 # define GREEN "\e[0;32m"
 # define BLUE "\e[0;34m"
+# define PURPLE "\e[0;35m"
 # define YELLOW "\e[0;33m"
 # define RESET "\e[0;37m"
 

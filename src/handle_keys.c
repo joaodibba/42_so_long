@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 18:39:05 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/02 01:12:12 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/05 15:40:07 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,11 @@
 int	handle_key(int key, t_vars *vars)
 {
 	if (key == ESCAPE)
+	{
+		ft_printf("[ " RED "XX" RESET " ] |" \
+		" You exited the game before finishing :(\n");
 		close_window(vars);
+	}
 	if (key == W || key == UP)
 		vars->player.move.up = 1;
 	if (key == S || key == DOWN)

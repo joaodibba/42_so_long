@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:56:42 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/02 01:30:54 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/05 15:25:39 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,9 @@ typedef struct s_player
 	t_pos			pos;
 	t_move			move;
 	unsigned int	collectible_count;
+	unsigned int	move_count;
 }					t_player;
+
 typedef struct s_vars
 {
 	void			*mlx;
