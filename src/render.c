@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 17:55:42 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/05 15:32:30 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/05 15:44:46 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,6 @@ int	render(t_vars *vars)
 	char *strfinal;
 	stritoa = ft_itoa(vars->player.move_count);
 	strfinal = ft_strjoin("Steps: ", stritoa);
-	mlx_string_put(vars->mlx, vars->win, 10, 40, RED_PIXEL, strfinal);
+	mlx_string_put(vars->mlx, vars->win, 10, 30, RED_PIXEL, strfinal);
 	return (EXIT_SUCCESS);
 }
