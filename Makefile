@@ -6,7 +6,7 @@
 #    By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/01 16:38:57 by jalves-c          #+#    #+#              #
-#    Updated: 2023/06/06 16:55:33 by jalves-c         ###   ########.fr        #
+#    Updated: 2023/06/06 20:56:56 by jalves-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,20 +16,18 @@ CC    = @gcc
 FLAGS = -g -fsanitize=address
 LFT   = include/libft/libft.a
 INC   = -I./include/libft -I./include/mlx -I./include/mlx_macos
-SRC   = src/load_textures/load_player.c \
-		src/load_textures/load_textures.c \
+SRC   = src/load_textures/load_textures.c \
 		src/load_textures/load_textures1.c \
 		src/load_textures/load_textures2.c \
-		src/map/manage_map.c \
 		src/map/read_map.c \
 		src/map/map_validator.c \
 		src/map/validations.c \
 		src/render/pixel.c \
 		src/render/render_map.c \
-		src/render/render_player.c \
+		src/render/player.c \
 		src/render/render.c \
 		src/helper_functions.c \
-		src/move.c \
+		src/helper_functions1.c \
 		src/so_long.c 
 
 #$(wildcard src/*.c)

@@ -6,12 +6,11 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 16:31:41 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/06 17:45:35 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/06 20:58:41 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/so_long.h"
-
 
 void	read_map(const char *path_to_map, t_map *map)
 {

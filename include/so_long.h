@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:27:08 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/06 17:03:20 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/06 20:56:30 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void			copy_image(t_img img, t_pos pos, t_img *final_img);
 void			move(t_map *map, t_player *player, int x, int y);
 
 //load textures
-void			load_player(t_vars *vars);
+void			load_player_texture(t_vars *vars);
 void			load_map_exit_texture(t_vars *vars);
 void			load_empty_space_texture(t_vars *vars);
 void			load_collectibles_texture(t_vars *vars);
@@ -76,10 +76,12 @@ void			load_pc_up_texture(t_vars *vars);
 void			load_pc_down_texture(t_vars *vars);
 void			load_pc_left_texture(t_vars *vars);
 void			load_pc_right_texture(t_vars *vars);
-void			load_texture(t_vars	*vars);
+void			load_textures(t_vars	*vars);
 t_img			load_texture_to_img(t_vars *vars, char *path);
 
 
 void			find_in_map(t_vars *vars, char stuff);
+void			animation(t_vars *vars);
+void			zero_map_count(t_map *map);
 
 #endif

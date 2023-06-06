@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 12:22:27 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/06 12:26:15 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/06 20:58:56 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,10 @@ void	load_pc_left_texture(t_vars *vars)
 void	load_pc_right_texture(t_vars *vars)
 {
 	vars->map.pc_right = load_texture_to_img(vars, "textures/XPM/PC_RIGHT.xpm");
+}
+
+void	load_player_texture(t_vars *vars)
+{
+	vars->player.img = load_texture_to_img(vars, \
+	"textures/PLAYER/XPM/NORMAL/1.xpm");
 }

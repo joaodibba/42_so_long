@@ -1,16 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move.c                                             :+:      :+:    :+:   */
+/*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/01 13:17:25 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/06 17:57:49 by jalves-c         ###   ########.fr       */
+/*   Created: 2023/06/01 17:32:09 by jalves-c          #+#    #+#             */
+/*   Updated: 2023/06/06 20:07:40 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../../include/so_long.h"
+
+void	render_player(t_vars *vars)
+{
+	copy_image(vars->player.img, vars->player.pos, &vars->final_image);
+}
 
 bool	is_obstacle(char grid_value)
 {

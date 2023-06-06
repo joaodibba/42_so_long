@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:03:11 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/06 17:02:14 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/06 20:03:28 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,15 @@ int	close_window(t_vars *vars)
 {
 	mlx_destroy_window(vars->mlx, vars->win);
 	exit (0);
+}
+
+void	zero_map_count(t_map *map)
+{
+	map->wall_count = 0;
+	map->pc_count = 0;
+	map->collectible_count = 0;
+	map->empty_space_count = 0;
+	map->map_exit_count = 0;
+	map->map_start_count = 0;
+	map->cone_count = 0;
 }

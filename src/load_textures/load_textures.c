@@ -6,13 +6,13 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 16:24:39 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/06 03:39:59 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/06 20:57:54 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/so_long.h"
 
-void	load_texture(t_vars	*vars)
+void	load_textures(t_vars	*vars)
 {
 	load_wall_texture(vars);
 	load_pc_up_texture(vars);
@@ -23,6 +23,7 @@ void	load_texture(t_vars	*vars)
 	load_empty_space_texture(vars);
 	load_collectibles_texture(vars);
 	load_cone_texture(vars);
+	load_player_texture(vars);
 }
 
 t_img	load_texture_to_img(t_vars *vars, char *path)
