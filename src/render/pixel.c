@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_player.c                                    :+:      :+:    :+:   */
+/*   pixel.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/01 17:32:09 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/01 17:32:11 by jalves-c         ###   ########.fr       */
+/*   Created: 2023/06/06 12:27:10 by jalves-c          #+#    #+#             */
+/*   Updated: 2023/06/06 12:27:35 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../../include/so_long.h"
 
-void	render_player(t_vars *vars)
+void	put_pixel(t_img *img, int x, int y, int color)
 {
-	copy_image(vars->map.map_start, vars->player.pos, &vars->final_image);
+	char	*dst;
+
+	dst = img->addr + (y * img->line_len + x * (img->bpp / 8));
+	*(unsigned int *)dst = color;
+}
+
+unsigned int	get_pixel(t_img *img, int x, int y)
+{
+	char	*dst;
+
+	dst = img->addr + (y * img->line_len + x * (img->bpp / 8));
+	return (*(unsigned int *)dst);
 }

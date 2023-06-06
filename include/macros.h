@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:39:20 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/05 15:17:47 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/05 23:37:51 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@
 # define RED_PIXEL 0XFF0000
 # define GREEN_PIXEL 0XFF00
 # define WHITE_PIXEL 0XFFFFFF
+# define BLACK_PIXEL 0X000000
 
 // PRINTF_COLORS
 # define RED "\e[0;31m"

@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:56:42 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/05 15:25:39 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/06 03:32:47 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,10 @@ typedef struct s_move
 typedef struct s_player
 {
 	t_img			img;
+	t_img			walk_up[4];
+	t_img			walk_down[4];
+	t_img			walk_left[4];
+	t_img			walk_right[4];
 	t_pos			pos;
 	t_move			move;
 	unsigned int	collectible_count;

@@ -5,12 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/06 03:46:15 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/01 17:20:43 by jalves-c         ###   ########.fr       */
+/*   Created: 2023/06/06 16:31:41 by jalves-c          #+#    #+#             */
+/*   Updated: 2023/06/06 17:45:35 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../../include/so_long.h"
+
 
 void	read_map(const char *path_to_map, t_map *map)
 {
@@ -56,19 +57,3 @@ char	*read_map_content(int fd)
 	}
 	return (text);
 }
-
-//verificar se dá merda
-//map size check nao deve ser bool
-bool	map_validator(t_vars *vars)
-{	
-	ft_printf("[ " YELLOW ".." RESET \
-	" ] | Validating map...\n");
-	if (map_size_check(&(vars->map)) != true || \
-		map_is_rectangular(&(vars->map)) != true || \
-		map_content_is_valid(&(vars->map)) != true || \
-		map_is_closed(&(vars->map)) != true)
-		return (false);
-	return (true);
-}
-	/*if (map_valid_path_checker(vars, &(vars->map)) != true)
-		return (false);*/

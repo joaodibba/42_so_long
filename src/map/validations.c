@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_map.c                                     :+:      :+:    :+:   */
+/*   validations.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 12:57:36 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/02 01:33:50 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/06 16:58:22 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../../include/so_long.h"
 
-//isto não faz check do mapa e não deve ser boolean
-bool	map_size_check(t_map *map)
+void	get_map_size(t_map *map)
 {
 	size_t	x_size;
 	size_t	y_size;
@@ -21,17 +20,16 @@ bool	map_size_check(t_map *map)
 	x_size = 0;
 	y_size = 0;
 	if (!map || !map->grid)
-		return (false);
+		;
 	x_size = ft_strlen(map->grid[0]);
 	if (x_size == 0)
-		return (false);
+		return ;
 	while (map->grid[y_size] != 0)
 		y_size++;
 	if (y_size == 0)
-		return (false);
+		return ;
 	map->width = x_size;
 	map->height = y_size;
-	return (true);
 }
 
 bool	map_is_rectangular(t_map *map)
@@ -67,12 +65,8 @@ bool	map_content_count(t_map *map, char c)
 	return (false);
 }
 
-bool	map_content_is_valid(t_map *map)
+void	zero_map_count(t_map *map)
 {
-	int	y;
-	int	x;
-
-	y = 0;
 	map->wall_count = 0;
 	map->pc_count = 0;
 	map->collectible_count = 0;
@@ -80,6 +74,15 @@ bool	map_content_is_valid(t_map *map)
 	map->map_exit_count = 0;
 	map->map_start_count = 0;
 	map->cone_count = 0;
+}
+
+bool	map_content_is_valid(t_map *map)
+{
+	int	y;
+	int	x;
+
+	y = 0;
+	zero_map_count(map);
 	while (map->grid[y])
 	{
 		x = 0;

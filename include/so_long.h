@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:27:08 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/02 00:35:37 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/06 17:03:20 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <stdbool.h>
+//# include <X11/Xlib.h>
 
 //arguments management
 bool			arguments_check(int ac, char **av);
@@ -30,9 +31,10 @@ bool			path_to_map_check(const char *path_to_map);
 void			read_map(const char *path_to_map, t_map *map);
 char			*read_map_content(int fd);
 t_map			duplicate_map(t_map map);
+
 void			map_error(t_map *map);
+void			get_map_size(t_map *map);
 bool			map_validator(t_vars *vars);
-bool			map_size_check(t_map *map);
 bool			map_is_rectangular(t_map *map);
 bool			map_content_is_valid(t_map *map);
 bool			map_is_closed(t_map *map);
@@ -50,7 +52,6 @@ int				close_window(t_vars *vars);
 int				render(t_vars *vars);
 
 //graphics
-void			load_sprites(t_vars	*vars);
 unsigned int	get_pixel(t_img *img, int x, int y);
 void			put_pixel(t_img *img, int x, int y, int color);
 void			render_map(t_vars *vars);
@@ -60,11 +61,25 @@ void			put_sprite(t_vars *vars, t_pos pos, char c);
 t_vars			*vars(void);
 t_map			*map(void);
 
-void	render_player(t_vars *vars);
-void	copy_image(t_img img, t_pos pos, t_img *final_img);
-void	find_map_start(t_vars *vars);
-void	move(t_map *map, t_player *player, int x, int y);
-void 	cap_fps(int cap);
-void 	find_map_cone(t_vars *vars);
+void			render_player(t_vars *vars);
+void			copy_image(t_img img, t_pos pos, t_img *final_img);
+void			move(t_map *map, t_player *player, int x, int y);
+
+//load textures
+void			load_player(t_vars *vars);
+void			load_map_exit_texture(t_vars *vars);
+void			load_empty_space_texture(t_vars *vars);
+void			load_collectibles_texture(t_vars *vars);
+void			load_cone_texture(t_vars *vars);
+void			load_wall_texture(t_vars *vars);
+void			load_pc_up_texture(t_vars *vars);
+void			load_pc_down_texture(t_vars *vars);
+void			load_pc_left_texture(t_vars *vars);
+void			load_pc_right_texture(t_vars *vars);
+void			load_texture(t_vars	*vars);
+t_img			load_texture_to_img(t_vars *vars, char *path);
+
+
+void			find_in_map(t_vars *vars, char stuff);
 
 #endif

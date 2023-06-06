@@ -6,11 +6,11 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 03:45:59 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/02 00:37:17 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/06 17:44:59 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../../include/so_long.h"
 
 void	map_error(t_map *map)
 {
@@ -24,81 +24,63 @@ void	map_error(t_map *map)
 t_map	duplicate_map(t_map map)
 {
 	t_map	map_copy;
-	size_t	i;
+	size_t	index;
 
 	map_copy.grid = malloc((map.height + 1) * sizeof(char *));
-	i = 0;
-	while (i < map.width)
+	index = 0;
+	while (index < map.width)
 	{
-		map_copy.grid[i] = malloc(map.width * sizeof(char));
-		ft_memcpy(map_copy.grid[i], map.grid[i], map.width);
-		i++;
+		map_copy.grid[index] = malloc(map.width * sizeof(char));
+		ft_memcpy(map_copy.grid[index], map.grid[index], map.width);
+		index++;
 	}
-	map_copy.grid[i] = 0;
+	map_copy.grid[index] = 0;
 	return (map_copy);
 }
 
 void	print2darray(char **arr, int rows)
 {
-	int	i;
-	int	j;
+	t_pos	point;
 
-	i = 0;
-	while (i < rows - 1)
+	point.y = 0;
+	while (point.y < rows - 1)
 	{
-		j = 0;
-		while (arr[i][j] != '\0')
+		point.x = 0;
+		while (arr[point.y][point.x] != '\0')
 		{
-			printf("%c ", arr[i][j]);
-			j++;
+			printf("%c ", arr[point.y][point.x]);
+			point.x++;
 		}
-		i++;
+		point.y++;
 	}
 	printf("\n");
 }
 
-void find_map_start(t_vars *vars)
+void	find_in_map(t_vars *vars, char stuff)
 {
-    int x;
-    int y;
+	t_pos	point;
 
-    y = 0;
-    while (vars->map.grid[y])
-    {
-        x = 0;
-        while (vars->map.grid[y][x])
-        {
-            if (vars->map.grid[y][x] == MAP_START)
-            {
-                vars->player.pos.y = y;
-                vars->player.pos.x = x;
-				break ;
-            }
-            x++;
-        }
-        y++;
-    }
-}
-
-void find_map_cone(t_vars *vars)
-{
-    int x;
-    int y;
-
-    y = 0;
-    while (vars->map.grid[y])
-    {
-        x = 0;
-        while (vars->map.grid[y][x])
-        {
-            if (vars->map.grid[y][x] == CONE)
-            {
-                vars->map.cone_pos.y = y;
-                vars->map.cone_pos.x = x;
-				break ;
-            }
-            x++;
-        }
-        y++;
-    }
+	point.y = 0;
+	while (vars->map.grid[point.y])
+	{
+		point.x = 0;
+		while (vars->map.grid[point.y][point.x])
+		{
+			if (vars->map.grid[point.y][point.x] == stuff)
+			{
+				if (stuff == MAP_START)
+				{
+					vars->player.pos = (t_pos){point.x, point.y};
+					break ;
+				}
+				if (stuff == CONE)
+				{
+					vars->map.cone_pos = (t_pos){point.x, point.y};
+					break ;
+				}
+			}
+			point.x++;
+		}
+		point.y++;
+	}
 }

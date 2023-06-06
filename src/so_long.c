@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 01:43:24 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/05 15:41:35 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/06 17:48:46 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ bool	arguments_check(int ac, char **av)
 	if (ac != 2)
 	{
 		(void)av;
-		ft_printf("[ " RED "!!" RESET " ] | Wrong arguments number \"./so_long " \
-				RED "path/to/map.ber" RESET "\".\n");
+		ft_printf("[ "RED"!!"RESET" ] | Wrong arguments number \"./so_long " \
+				RED"path/to/map.ber"RESET"\".\n");
 		return (false);
 	}
 	if (path_to_map_check(av[1]) != true)
 	{
-		ft_printf("[ " RED"!!"RESET " ] | "RED"%s"RESET \
+		ft_printf("[ "RED"!!"RESET" ] | "RED"%s"RESET \
 				" is not a valid map.\n", av[1]);
 		return (false);
 	}
@@ -49,8 +49,8 @@ int	main(int ac, char **av)
 	read_map(av[1], &vars.map);
 	if (map_validator(&vars) != true)
 		map_error(&vars.map);
-	ft_printf("[ " GREEN "OK" RESET " ] | %s" \
-												" is a valid map!\n", av[1]);
+	ft_printf("[ "GREEN"OK"RESET" ] | %s" \
+	" is a valid map!\n", av[1]);
 	vars.win_width = vars.map.width * TILE_SIZE ;
 	vars.win_height = vars.map.height * TILE_SIZE;
 	vars.mlx = mlx_init();
@@ -63,10 +63,11 @@ int	main(int ac, char **av)
 	vars.final_image.addr = mlx_get_data_addr(vars.final_image.img, \
 	&vars.final_image.bpp, &vars.final_image.line_len, \
 	&vars.final_image.endian);
-	find_map_start(&vars);
-	find_map_cone(&vars);
-	load_sprites(&vars);
-	ft_printf("[ " BLUE "GO" RESET " ] |" \
+	find_in_map(&vars, CONE);
+	find_in_map(&vars, MAP_START);
+	load_texture(&vars);
+	load_player(&vars);
+	ft_printf("[ "BLUE"GO"RESET" ] |" \
 	" Your mission is to get all the ducks and finish the map.\n");
 	mlx_hook(vars.win, KeyPress, KeyPressMask, &handle_key, &vars);
 	mlx_hook(vars.win, DestroyNotify, KeyPressMask, &close_window, &vars);

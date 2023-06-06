@@ -6,17 +6,14 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 17:55:42 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/05 15:44:46 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/06 18:04:09 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../../include/so_long.h"
 
-int	render(t_vars *vars)
+void	validate_player_move(t_vars *vars)
 {
-	if (vars->win == NULL)
-		return (MLX_ERROR);
-	render_map(vars);
 	if (vars->player.move.up == true)
 	{
 		move(&(vars->map), &(vars->player), 0, -1);
@@ -37,18 +34,42 @@ int	render(t_vars *vars)
 		move(&(vars->map), &(vars->player), 1, 0);
 		vars->player.move.right = 0;
 	}
+}
+
+static void	put_steps(t_vars	*vars, t_pos pos, int steps)
+{
+	char	*new_str;
+	char	*steps_str;
+
+	steps_str = ft_itoa(steps);
+	new_str = ft_strjoin("Steps: ", steps_str);
+	mlx_string_put(vars->mlx, vars->win, pos.x, pos.y, BLACK_PIXEL, new_str);
+}
+
+static void	put_ducks(t_vars	*vars, t_pos pos, int total_ducks, int ducks)
+{
+	char	*string;
+	char	*ducks_str;
+	char	*total_ducks_str;
+
+	total_ducks_str = ft_itoa(total_ducks);
+	ducks_str = ft_itoa(ducks);
+	string = ft_strjoin("Ducks: ", total_ducks_str);
+	string = ft_strjoin(string, " / ");
+	string = ft_strjoin(string, ducks_str);
+	mlx_string_put(vars->mlx, vars->win, pos.x, pos.y, BLACK_PIXEL, string);
+}
+
+int	render(t_vars *vars)
+{
+	if (vars->win == NULL)
+		return (MLX_ERROR);
+	render_map(vars);
+	validate_player_move(vars);
 	render_player(vars);
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->final_image.img, 0, 0);
-	char *str;
-	char *str2;
-	str = ft_itoa(vars->player.collectible_count);
-	str2 = ft_strjoin("Ducks: ", str);
-	mlx_string_put(vars->mlx, vars->win, 10, 10, RED_PIXEL, str2);
-
-	char *stritoa;
-	char *strfinal;
-	stritoa = ft_itoa(vars->player.move_count);
-	strfinal = ft_strjoin("Steps: ", stritoa);
-	mlx_string_put(vars->mlx, vars->win, 10, 30, RED_PIXEL, strfinal);
+	put_ducks(vars, (t_pos){10, 10}, vars->map.collectible_count, \
+	vars->player.collectible_count);
+	put_steps(vars, (t_pos){10, 30}, vars->player.move_count);
 	return (EXIT_SUCCESS);
 }
