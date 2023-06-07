@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 17:55:42 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/07 23:03:34 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/07 23:04:50 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,6 @@ static void	put_ducks(t_vars *vars, t_pos pos, int total_ducks, int ducks)
 	free(string);
 	string = temp_string;
 	mlx_string_put(vars->mlx, vars->win, pos.x, pos.y, BLACK_PIXEL, string);
-	free(ducks_str);
-	free(string);
 	ft_free_multiple(2, ducks_str, string);
 }
 

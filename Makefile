@@ -6,14 +6,14 @@
 #    By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/01 16:38:57 by jalves-c          #+#    #+#              #
-#    Updated: 2023/06/07 22:42:27 by jalves-c         ###   ########.fr        #
+#    Updated: 2023/06/07 23:15:14 by jalves-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME  = so_long
 OS    = $(shell uname)
 CC    = @gcc
-FLAGS = -g -fsanitize=address
+FLAGS = -Wall -Wextra -Werror -fsanitize=address # to use valgrind -static-libasan
 LFT   = include/libft/libft.a
 INC   = -I./include/libft -I./include/mlx -I./include/mlx_macos
 SRC   = src/load_textures/load_textures.c \

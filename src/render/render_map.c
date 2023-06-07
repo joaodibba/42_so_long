@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 20:47:06 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/06 18:05:44 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/07 23:15:40 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 void	copy_image(t_img img, t_pos pos, t_img *final_img)
 {
 	t_pos			point;
-	int				x;
-	int				y;
 	unsigned int	color;
 
 	color = 0;
