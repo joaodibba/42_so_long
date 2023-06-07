@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:03:11 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/06 20:03:28 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/07 20:41:50 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,7 @@
 int	handle_key(int key, t_vars *vars)
 {
 	if (key == ESCAPE)
-	{
-		ft_printf("[ " RED "XX" RESET " ] |" \
-		" You exited the game before finishing :(\n");
 		close_window(vars);
-	}
 	if (key == W || key == UP)
 		vars->player.move.up = 1;
 	if (key == S || key == DOWN)
@@ -33,6 +29,8 @@ int	handle_key(int key, t_vars *vars)
 
 int	close_window(t_vars *vars)
 {
+	ft_printf("[ " RED "XX" RESET " ] |" \
+		" You exited the game before finishing :(\n");
 	mlx_destroy_window(vars->mlx, vars->win);
 	exit (0);
 }

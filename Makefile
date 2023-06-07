@@ -6,7 +6,7 @@
 #    By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/01 16:38:57 by jalves-c          #+#    #+#              #
-#    Updated: 2023/06/06 20:56:56 by jalves-c         ###   ########.fr        #
+#    Updated: 2023/06/06 22:04:37 by jalves-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRC   = src/load_textures/load_textures.c \
 		src/load_textures/load_textures1.c \
 		src/load_textures/load_textures2.c \
 		src/map/read_map.c \
+		src/map/flood_fill.c \
 		src/map/map_validator.c \
 		src/map/validations.c \
 		src/render/pixel.c \

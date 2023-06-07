@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 01:43:24 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/06 20:56:05 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/07 21:46:52 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ bool	arguments_check(int ac, char **av)
 	if (ac != 2)
 	{
 		(void)av;
-		ft_printf("[ "RED"!!"RESET" ] | Wrong arguments number \"./so_long " \
-				RED"path/to/map.ber"RESET"\".\n");
+		ft_printf("[ "RED"!!"RESET" ] | Wrong arguments number" \
+				RED" <./so_long path/to/map.ber>\n"RESET);
 		return (false);
 	}
 	if (path_to_map_check(av[1]) != true)
@@ -63,13 +63,13 @@ int	main(int ac, char **av)
 	if (arguments_check(ac, av) != true)
 		return (EXIT_FAILURE);
 	read_map(av[1], &vars.map);
+	find_in_map(&vars, CONE);
+	find_in_map(&vars, MAP_START);
 	if (map_validator(&vars) != true)
 		map_error(&vars.map);
 	ft_printf("[ "GREEN"OK"RESET" ] | %s" \
 	" is a valid map!\n", av[1]);
 	initialize_vars(&vars);
-	find_in_map(&vars, CONE);
-	find_in_map(&vars, MAP_START);
 	load_textures(&vars);
 	ft_printf("[ "BLUE"GO"RESET" ] |" \
 	" Your mission is to get all the ducks and finish the map.\n");

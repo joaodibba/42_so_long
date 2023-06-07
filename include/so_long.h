@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:27:08 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/06 20:56:30 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/06 22:11:04 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ bool			map_content_is_valid(t_map *map);
 bool			map_is_closed(t_map *map);
 bool			map_content_count(t_map *map, char c);
 void			assign_map_to_vars(t_map *map, t_vars *vars);
-
+bool			map_valid_path_checker(t_vars *vars, t_map	*map);
 void			print2darray(char **arr, int rows);
 
 //window management
@@ -83,5 +83,6 @@ t_img			load_texture_to_img(t_vars *vars, char *path);
 void			find_in_map(t_vars *vars, char stuff);
 void			animation(t_vars *vars);
 void			zero_map_count(t_map *map);
+bool			is_obstacle(char grid_value);
 
 #endif

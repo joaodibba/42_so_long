@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 16:43:07 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/06 20:11:29 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/07 21:34:52 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	get_map_size(t_map *map)
 	map->height = y_size;
 }
 
-//verificar se dá merda
 bool	map_validator(t_vars *vars)
 {	
 	ft_printf("[ " YELLOW ".." RESET \
@@ -40,9 +39,8 @@ bool	map_validator(t_vars *vars)
 	get_map_size(&(vars->map));
 	if (map_is_rectangular(&(vars->map)) != true || \
 		map_content_is_valid(&(vars->map)) != true || \
-		map_is_closed(&(vars->map)) != true)
+		map_is_closed(&(vars->map)) != true || \
+		map_valid_path_checker(vars, &(vars->map)) != true)
 		return (false);
 	return (true);
 }
-/*if (map_valid_path_checker(vars, &(vars->map)) != true)
-		return (false);*/
