@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:56:42 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/06 21:38:47 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/08 00:45:21 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ typedef struct s_map
 	t_img			collectible;
 	t_img			cone;
 	t_pos			cone_pos;
+	t_flood			flood;
 }				t_map;
 
 typedef struct s_move
@@ -86,7 +87,6 @@ typedef struct s_vars
 	void			*img;
 	unsigned int	win_height;
 	unsigned int	win_width;
-	t_flood			flood;
 	t_map			map;
 	t_player		player;
 	t_img			final_image;
