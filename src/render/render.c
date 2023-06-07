@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 17:55:42 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/07 22:58:32 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/07 23:01:36 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,18 +47,20 @@ static void	put_steps(t_vars	*vars, t_pos pos, int steps)
 	ft_free_multiple(2, steps_str, new_str);
 }
 
-static void	put_ducks(t_vars	*vars, t_pos pos, int total_ducks, int ducks)
+static void	put_ducks(t_vars *vars, t_pos pos, int total_ducks, int ducks)
 {
-	char	*string;
 	char	*ducks_str;
 	char	*total_ducks_str;
+	char	*string;
 
 	total_ducks_str = ft_itoa(total_ducks);
 	ducks_str = ft_itoa(ducks);
-	string = ft_strjoin("Ducks: ", total_ducks_str);
-	string = ft_strjoin(string, " / ");
-	string = ft_strjoin(string, ducks_str);
+	string = ft_strjoin(ft_strjoin("Ducks: ", \
+	total_ducks_str), ft_strjoin(" / ", ducks_str));
 	mlx_string_put(vars->mlx, vars->win, pos.x, pos.y, BLACK_PIXEL, string);
+	free(total_ducks_str);
+	free(ducks_str);
+	free(string);
 	ft_free_multiple(3, total_ducks_str, ducks_str, string);
 }
 
