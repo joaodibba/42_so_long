@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 01:43:24 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/07 21:46:52 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/07 22:39:30 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int	main(int ac, char **av)
 	ft_printf("[ "GREEN"OK"RESET" ] | %s" \
 	" is a valid map!\n", av[1]);
 	initialize_vars(&vars);
+	initialize_player(&(vars.player));
 	load_textures(&vars);
 	ft_printf("[ "BLUE"GO"RESET" ] |" \
 	" Your mission is to get all the ducks and finish the map.\n");

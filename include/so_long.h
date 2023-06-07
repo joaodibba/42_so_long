@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:27:08 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/06 22:11:04 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/07 22:39:02 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,6 @@ void			find_in_map(t_vars *vars, char stuff);
 void			animation(t_vars *vars);
 void			zero_map_count(t_map *map);
 bool			is_obstacle(char grid_value);
+void			initialize_player(t_player *player);
 
 #endif

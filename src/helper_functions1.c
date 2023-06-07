@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 03:45:59 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/06 21:35:59 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/07 22:40:01 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,10 @@ void	find_in_map(t_vars *vars, char stuff)
 		}
 		point.y++;
 	}
+}
+
+void	initialize_player(t_player *player)
+{
+	player->collectible_count = 0;
+	player->move_count = 0;
 }

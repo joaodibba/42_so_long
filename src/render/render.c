@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 17:55:42 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/06 20:01:35 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/07 22:58:32 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ static void	put_steps(t_vars	*vars, t_pos pos, int steps)
 	steps_str = ft_itoa(steps);
 	new_str = ft_strjoin("Steps: ", steps_str);
 	mlx_string_put(vars->mlx, vars->win, pos.x, pos.y, BLACK_PIXEL, new_str);
+	ft_free_multiple(2, steps_str, new_str);
 }
 
 static void	put_ducks(t_vars	*vars, t_pos pos, int total_ducks, int ducks)
@@ -58,6 +59,7 @@ static void	put_ducks(t_vars	*vars, t_pos pos, int total_ducks, int ducks)
 	string = ft_strjoin(string, " / ");
 	string = ft_strjoin(string, ducks_str);
 	mlx_string_put(vars->mlx, vars->win, pos.x, pos.y, BLACK_PIXEL, string);
+	ft_free_multiple(3, total_ducks_str, ducks_str, string);
 }
 
 int	render(t_vars *vars)
@@ -68,8 +70,8 @@ int	render(t_vars *vars)
 	validate_player_move(vars);
 	render_player(vars);
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->final_image.img, 0, 0);
-	put_ducks(vars, (t_pos){10, 10}, vars->map.collectible_count, \
+	put_ducks(vars, (t_pos){10, 20}, vars->map.collectible_count, \
 	vars->player.collectible_count);
-	put_steps(vars, (t_pos){10, 30}, vars->player.move_count);
+	put_steps(vars, (t_pos){10, 40}, vars->player.move_count);
 	return (EXIT_SUCCESS);
 }
