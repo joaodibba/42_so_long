@@ -6,14 +6,14 @@
 #    By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/01 16:38:57 by jalves-c          #+#    #+#              #
-#    Updated: 2023/06/07 23:15:14 by jalves-c         ###   ########.fr        #
+#    Updated: 2023/06/08 20:53:23 by jalves-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME  = so_long
 OS    = $(shell uname)
-CC    = @gcc
-FLAGS = -Wall -Wextra -Werror -fsanitize=address # to use valgrind -static-libasan
+CC    = @cc
+FLAGS = -Wall -Wextra -Werror -fsanitize=address -static-libsan
 LFT   = include/libft/libft.a
 INC   = -I./include/libft -I./include/mlx -I./include/mlx_macos
 SRC   = src/load_textures/load_textures.c \
@@ -31,7 +31,6 @@ SRC   = src/load_textures/load_textures.c \
 		src/helper_functions1.c \
 		src/so_long.c 
 
-#$(wildcard src/*.c)
 OBJ   = $(patsubst src/%.c, obj/%.o, $(SRC))
 
 ifeq ($(OS), Darwin)

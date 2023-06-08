@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 16:31:41 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/06 20:58:41 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/08 20:38:45 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void	read_map(const char *path_to_map, t_map *map)
 	char	*text;
 
 	fd = open(path_to_map, 0, O_RDONLY);
-	if (fd == -1)
+	if (fd == -1 && ft_printf("[ "RED"!!"RESET" ] | "RED"%s"RESET \
+				" is not a valid map.\n", path_to_map) != 0)
 		exit(EXIT_FAILURE);
 	map->map_path = ft_strdup(path_to_map);
 	if (!map->map_path)

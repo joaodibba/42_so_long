@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 01:43:24 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/07 22:39:30 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/08 20:15:04 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,10 @@ void	initialize_vars(t_vars *vars)
 	vars->final_image.addr = mlx_get_data_addr(vars->final_image.img, \
 	&vars->final_image.bpp, &vars->final_image.line_len, \
 	&vars->final_image.endian);
+	vars->player.move.up = false;
+	vars->player.move.down = false;
+	vars->player.move.left = false;
+	vars->player.move.right = false;
 }
 
 int	main(int ac, char **av)
@@ -73,7 +77,7 @@ int	main(int ac, char **av)
 	initialize_player(&(vars.player));
 	load_textures(&vars);
 	ft_printf("[ "BLUE"GO"RESET" ] |" \
-	" Your mission is to get all the ducks and finish the map.\n");
+	" Your mission is to get all the ducks and exit the map.\n");
 	mlx_hook(vars.win, KeyPress, KeyPressMask, &handle_key, &vars);
 	mlx_hook(vars.win, DestroyNotify, KeyPressMask, &close_window, &vars);
 	mlx_loop_hook(vars.mlx, &render, &vars);
@@ -81,3 +85,5 @@ int	main(int ac, char **av)
 	ft_free_matrix(vars.map.grid);
 	ft_free_multiple(2, vars.map.map_path, vars.mlx);
 }
+
+//change flood fill coordinates

@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:56:42 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/08 00:45:21 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/08 18:53:51 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef struct s_pos
 typedef struct s_flood
 {
 	bool			exit_reached;
-	bool			collectibles_collected;
+	unsigned int	collectibles_collected;
 }	t_flood;
 
 typedef struct s_img

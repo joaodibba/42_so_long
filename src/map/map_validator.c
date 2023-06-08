@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 16:43:07 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/07 22:45:20 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/08 22:06:01 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,25 @@ bool	map_validator(t_vars *vars)
 	ft_printf("[ " YELLOW ".." RESET \
 	" ] | Validating map...\n");
 	get_map_size(&(vars->map));
-	if (map_is_rectangular(&(vars->map)) != true || \
-		map_content_is_valid(&(vars->map)) != true || \
-		map_is_closed(&(vars->map)) != true || \
-		map_valid_path_checker(vars, &(vars->map)) != true)
+	if (map_is_rectangular(&(vars->map)) != true)
+	{
+		printf("rect\n");
 		return (false);
+	}
+	if (map_content_is_valid(&(vars->map)) != true)
+	{
+		printf("content\n");
+		return (false);
+	}
+	if (map_is_closed(&(vars->map)) != true)
+	{
+		printf("closed\n");
+		return (false);
+	}
+	if (map_valid_path_checker(vars, &(vars->map)) != true)
+	{
+		printf("flood\n");
+		return (false);
+	}
 	return (true);
 }

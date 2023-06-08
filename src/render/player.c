@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 17:32:09 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/07 22:36:44 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/08 19:12:57 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	move(t_map *map, t_player *player, int x, int y)
 	if (map->grid[player->pos.y + y][player->pos.x + x] == \
 		COLLECTIBLE && ++player->collectible_count)
 	{
-		player->move_count++;
 		map->grid[player->pos.y + y][player->pos.x + x] = EMPTY_SPACE;
 		if (player->collectible_count == map->collectible_count)
 			map->grid[map->cone_pos.y][map->cone_pos.x] = EMPTY_SPACE;

@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 03:45:59 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/07 22:40:01 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/08 20:33:32 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,17 @@ t_map	duplicate_map(t_map map)
 	size_t	index;
 
 	map_copy.grid = malloc((map.height + 1) * sizeof(char *));
+	if (!map_copy.grid)
+		exit(EXIT_FAILURE);
 	index = 0;
 	while (index < map.height)
 	{
 		map_copy.grid[index] = malloc(map.width * sizeof(char));
+		if (!map_copy.grid[index])
+		{
+			ft_free_matrix(map_copy.grid);
+			exit (EXIT_FAILURE);
+		}
 		ft_memcpy(map_copy.grid[index], map.grid[index], map.width);
 		index++;
 	}
