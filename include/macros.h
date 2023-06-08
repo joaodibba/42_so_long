@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:39:20 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/08 00:52:46 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/08 16:52:04 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,12 @@
 # endif
 
 // MLX CODES
-# define KeyPress 2
-# define KeyPressMask 1L<<0
-# define KeyRelease 3
-# define KeyReleaseMask 1L<<1
-# define NoEventMask 0
-# define DestroyNotify 17
+// # define KeyPress 2
+// # define KeyPressMask 1L<<0
+// # define KeyRelease 3
+// # define KeyReleaseMask 1L<<1
+// # define NoEventMask 0
+// # define DestroyNotify 17
 
 // MLX_COLORS
 # define RED_PIXEL 0XFF0000

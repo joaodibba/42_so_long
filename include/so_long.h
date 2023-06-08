@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 18:27:08 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/07 22:39:02 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/08 16:52:19 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <stdbool.h>
-//# include <X11/Xlib.h>
+# include <X11/X.h>
 
 //arguments management
 bool			arguments_check(int ac, char **av);
@@ -78,7 +78,6 @@ void			load_pc_left_texture(t_vars *vars);
 void			load_pc_right_texture(t_vars *vars);
 void			load_textures(t_vars	*vars);
 t_img			load_texture_to_img(t_vars *vars, char *path);
-
 
 void			find_in_map(t_vars *vars, char stuff);
 void			animation(t_vars *vars);
