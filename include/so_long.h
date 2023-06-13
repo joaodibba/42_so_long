@@ -6,73 +6,71 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 17:21:56 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/06 02:49:46 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/13 18:49:02 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "../minilibx-linux/mlx.h"
+# include "mlx/mlx.h"
+# include "mlx_macos/mlx.h"
 # include "../libft/libft.h"
+# include "structures.h"
+# include "macros.h"
 # include <stdlib.h>
 # include <stdio.h>
 //# include <X11/X.h>
-//# include <X11/keysym.h>
 
-//WINDOW SIZE
-# define WINDOW_WIDTH 500
-# define WINDOW_HEIGHT 500
+//arguments management
+bool			arguments_check(int ac, char **av);
+bool			path_to_map_check(const char *path_to_map);
 
-//ERROR CODES
-# define EXIT_FAILURE	1
-# define EXIT_SUCCESS	0
+//read map
+void			read_map(const char *path_to_map, t_map *map);
+char			*read_map_content(int fd);
 
-//KEYCODES
-# define ESCAPE 65307
+//validate map
+bool			validate_map(t_vars *vars);
+void			get_map_size(t_map *map);
+bool			map_is_rectangular(t_map *map);
+bool			map_content_is_valid(t_map *map);
+bool			map_is_closed(t_map *map);
+bool			map_content_count(t_map *map, char c);
+bool			map_valid_path_checker(t_map	*map);
 
-//COLORS
-# define RED_PIXEL 0XFF0000
-# define GREEN_PIXEL 0XFF00
-# define WHITE_PIXEL 0XFFFFFF
+//window management
+int				handle_key(int key, t_vars *vars);
+int				close_window(t_vars *vars);
 
-typedef struct s_map
-{
-	char 	**map;
-	char	*map_path;
-}			t_map;
+//graphics
+int				render(t_vars *vars);
+unsigned int	get_pixel(t_img *img, int x, int y);
+void			put_pixel(t_img *img, int x, int y, int color);
+void			render_map(t_vars *vars);
+void			put_sprite(t_vars *vars, t_pos pos, char c);
+void			render_player(t_vars *vars);
+void			copy_image(t_img img, t_pos pos, t_img *final_img);
+void			move(t_map *map, t_player *player, int x, int y);
 
-typedef struct s_rect
-{
-	int		x;
-	int		y;
-	int		width;
-	int		height;
-	int		color;
-}			t_rect;
+//load textures
+void			load_textures(t_vars	*vars);
+t_img			load_texture_to_img(t_vars *vars, char *path);
+void			load_player_texture(t_vars *vars);
+void			load_map_exit_texture(t_vars *vars);
+void			load_empty_space_texture(t_vars *vars);
+void			load_collectibles_texture(t_vars *vars);
+void			load_cone_texture(t_vars *vars);
+void			load_wall_texture(t_vars *vars);
+void			load_pc_up_texture(t_vars *vars);
+void			load_pc_down_texture(t_vars *vars);
+void			load_pc_left_texture(t_vars *vars);
+void			load_pc_right_texture(t_vars *vars);
 
-typedef struct s_img
-{
-	void	*mlx_img;
-	char	*addr;
-	int		bpp;
-	int		line_len;
-	int		endian;
-}			t_img;
-
-typedef struct s_player
-{
-	int	x;
-	int	y;
-}		t_player;
-
-typedef struct s_data
-{
-	void		*mlx_ptr;
-	void		*win_ptr;
-	t_img		img;
-	t_player	*player;
-	int			cur_img;
-}				t_data;
+//helper functions
+char			**duplicate_map(t_map *map);
+t_pos			find_in_map(char **map, char stuff);
+bool			is_obstacle(char grid_value);
+void			map_error(t_map *map);
 
 #endif
