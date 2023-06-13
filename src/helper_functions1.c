@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 03:45:59 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/08 20:33:32 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/13 15:29:52 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,61 +21,44 @@ void	map_error(t_map *map)
 	exit(EXIT_FAILURE);
 }
 
-t_map	duplicate_map(t_map map)
+char	**duplicate_map(t_map *map)
 {
-	t_map	map_copy;
+	char	**grid;
 	size_t	index;
 
-	map_copy.grid = malloc((map.height + 1) * sizeof(char *));
-	if (!map_copy.grid)
+	grid = malloc((map->height + 1) * sizeof(char *));
+	if (!grid)
 		exit(EXIT_FAILURE);
 	index = 0;
-	while (index < map.height)
+	while (index < map->height)
 	{
-		map_copy.grid[index] = malloc(map.width * sizeof(char));
-		if (!map_copy.grid[index])
+		grid[index] = ft_strdup(map->grid[index]);
+		if (!grid[index])
 		{
-			ft_free_matrix(map_copy.grid);
+			ft_free_matrix(grid);
 			exit (EXIT_FAILURE);
 		}
-		ft_memcpy(map_copy.grid[index], map.grid[index], map.width);
 		index++;
 	}
-	map_copy.grid[index] = NULL;
-	return (map_copy);
+	grid[index] = 0;
+	return (grid);
 }
 
-void	find_in_map(t_vars *vars, char stuff)
+t_pos	find_in_map(char **map, char stuff)
 {
 	t_pos	point;
 
 	point.y = 0;
-	while (vars->map.grid[point.y])
+	while (map[point.y])
 	{
 		point.x = 0;
-		while (vars->map.grid[point.y][point.x])
+		while (map[point.y][point.x])
 		{
-			if (vars->map.grid[point.y][point.x] == stuff)
-			{
-				if (stuff == MAP_START)
-				{
-					vars->player.pos = (t_pos){point.x, point.y};
-					break ;
-				}
-				if (stuff == CONE)
-				{
-					vars->map.cone_pos = (t_pos){point.x, point.y};
-					break ;
-				}
-			}
+			if (map[point.y][point.x] == stuff)
+				return ((t_pos){point.x, point.y});
 			point.x++;
 		}
 		point.y++;
 	}
-}
-
-void	initialize_player(t_player *player)
-{
-	player->collectible_count = 0;
-	player->move_count = 0;
+	return ((t_pos){0, 0});
 }

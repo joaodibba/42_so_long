@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 16:36:49 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/05/29 23:23:05 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/13 15:29:45 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,6 @@ bool		ft_manage_buffer(char *buffer);
 size_t		ft_strcmp(const char *s1, const char *s2);
 void		ft_free_multiple(unsigned int count, ...);
 void		ft_free_matrix(char **matrix);
+void		printmatrix(char **matrix);
 
 #endif

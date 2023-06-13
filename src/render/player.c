@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 17:32:09 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/08 19:12:57 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/13 14:45:03 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ bool	is_obstacle(char grid_value)
 
 void	move(t_map *map, t_player *player, int x, int y)
 {
-	if (is_obstacle(map->grid[player->pos.y + y][player->pos.x + x]))
+	map->cone_pos = find_in_map(map->grid, CONE);
+	if (is_obstacle(map->grid[player->pos.y + y][player->pos.x + x]) ||
+	(map->grid[player->pos.y + y][player->pos.x + x] == MAP_EXIT && \
+	map->collectible_count != player->collectible_count))
 		return ;
 	if (map->grid[player->pos.y + y][player->pos.x + x] == \
 		COLLECTIBLE && ++player->collectible_count)

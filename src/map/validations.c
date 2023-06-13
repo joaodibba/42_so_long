@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 12:57:36 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/08 19:22:34 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/13 14:46:02 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ bool	map_content_is_valid(t_map *map)
 	int	x;
 
 	y = 0;
-	zero_map_count(map);
 	while (map->grid[y])
 	{
 		x = 0;

@@ -6,7 +6,7 @@
 #    By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/01 16:38:57 by jalves-c          #+#    #+#              #
-#    Updated: 2023/06/08 20:53:23 by jalves-c         ###   ########.fr        #
+#    Updated: 2023/06/13 16:20:34 by jalves-c         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SRC   = src/load_textures/load_textures.c \
 		src/load_textures/load_textures2.c \
 		src/map/read_map.c \
 		src/map/flood_fill.c \
-		src/map/map_validator.c \
+		src/map/validate_map.c \
 		src/map/validations.c \
 		src/render/pixel.c \
 		src/render/render_map.c \
@@ -99,12 +99,21 @@ re: fclean norm all
 
 # MAPS
 bocal:
-	@make re -s && ./so_long maps/bocal.ber
+	@make re -s && ./so_long assets/maps/bocal.ber
+	
+bocalonsteroids:
+	@make re -s && ./so_long assets/maps/bocal_on_steroids.ber
 
 cluster1:
-	@make re -s && ./so_long maps/cluster1.ber
+	@make re -s && ./so_long assets/maps/cluster1.ber
 
+cluster1onsteroids:
+	@make re -s && ./so_long assets/maps/cluster1_on_steroids.ber
+	
 cluster2:
-	@make re -s && ./so_long maps/cluster2.ber
+	@make re -s && ./so_long assets/maps/cluster2.ber
+
+cluster2onsteroids:
+	@make re -s && ./so_long assets/maps/cluster2_on_steroids.ber
 
 .PHONY: all

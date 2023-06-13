@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 16:43:07 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/08 22:06:01 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/13 16:14:27 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,30 +32,26 @@ void	get_map_size(t_map *map)
 	map->height = y_size;
 }
 
-bool	map_validator(t_vars *vars)
+bool	validate_map(t_vars *vars)
 {	
-	ft_printf("[ " YELLOW ".." RESET \
+	ft_printf("[ "YELLOW".."RESET \
 	" ] | Validating map...\n");
 	get_map_size(&(vars->map));
-	if (map_is_rectangular(&(vars->map)) != true)
-	{
-		printf("rect\n");
+	if (map_is_rectangular(&(vars->map)) != true && \
+		ft_printf("[ " RED"!!"RESET " ] | " \
+		RED"%s"RESET" is not rectangular.\n", vars->map.map_path))
 		return (false);
-	}
-	if (map_content_is_valid(&(vars->map)) != true)
-	{
-		printf("content\n");
+	if (map_content_is_valid(&(vars->map)) != true && \
+		ft_printf("[ " RED"!!"RESET " ] | " \
+		RED"%s"RESET" content is unknown.\n", vars->map.map_path))
 		return (false);
-	}
-	if (map_is_closed(&(vars->map)) != true)
-	{
-		printf("closed\n");
+	if (map_is_closed(&(vars->map)) != true && \
+		ft_printf("[ " RED"!!"RESET " ] | " \
+		RED"%s"RESET" is not closed by walls.\n", vars->map.map_path) != 0)
 		return (false);
-	}
-	if (map_valid_path_checker(vars, &(vars->map)) != true)
-	{
-		printf("flood\n");
+	if (map_valid_path_checker(&(vars->map)) != true && \
+		ft_printf("[ " RED"!!"RESET " ] | " \
+		RED"%s"RESET" has no valid path.\n", vars->map.map_path) != 0)
 		return (false);
-	}
 	return (true);
 }

@@ -66,7 +66,8 @@ SRC   = src/ft_atoi.c \
 		src/get_next_line_utils.c \
 		src/ft_strcmp.c \
 		src/ft_free_multiple.c \
-		src/ft_free_matrix.c
+		src/ft_free_matrix.c \
+		src/ft_print_matrix.c
 
 OBJ = $(SRC:.c=.o)
 
