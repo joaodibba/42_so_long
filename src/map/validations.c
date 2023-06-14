@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 12:57:36 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/13 14:46:02 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/14 16:12:32 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,6 @@ bool	map_content_count(t_map *map, char c)
 		return (++map->map_exit_count);
 	else if (c == MAP_START)
 		return (++map->map_start_count);
-	else if (c == CONE)
-		return (++map->cone_count);
 	return (false);
 }
 
@@ -64,8 +62,7 @@ bool	map_content_is_valid(t_map *map)
 	}
 	return (map->wall_count > 0 && map->pc_count > 0 \
 			&& map->collectible_count > 0 && map->empty_space_count > 0 && \
-			map->map_exit_count == 1 && map->map_start_count == 1 && \
-			map->cone_count == 1);
+			map->map_exit_count == 1 && map->map_start_count == 1);
 }
 
 bool	map_is_closed(t_map *map)

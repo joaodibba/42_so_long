@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 20:47:06 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/07 23:15:40 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/14 16:13:36 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,6 @@ void	put_sprite(t_vars *vars, t_pos pos, char c)
 		copy_image(vars->map.pc_left, pos, &vars->final_image);
 	else if (c == PC_RIGHT)
 		copy_image(vars->map.pc_right, pos, &vars->final_image);
-	else if (c == CONE)
-		copy_image(vars->map.cone, pos, &vars->final_image);
 }
 
 void	render_map(t_vars *vars)

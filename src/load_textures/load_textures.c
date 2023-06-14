@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 16:24:39 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/06 20:57:54 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/14 16:12:17 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	load_textures(t_vars	*vars)
 	load_map_exit_texture(vars);
 	load_empty_space_texture(vars);
 	load_collectibles_texture(vars);
-	load_cone_texture(vars);
 	load_player_texture(vars);
 }
 

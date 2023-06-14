@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 21:38:23 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/13 16:18:28 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/14 16:12:23 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,6 @@ void	load_collectibles_texture(t_vars *vars)
 {
 	vars->map.collectible = load_texture_to_img(vars, \
 	"assets/textures/XPM/DUCK.xpm");
-}
-
-void	load_cone_texture(t_vars *vars)
-{	
-	vars->map.cone = load_texture_to_img(vars, \
-	"assets/textures/XPM/CONE.xpm");
 }
 
 void	load_wall_texture(t_vars *vars)

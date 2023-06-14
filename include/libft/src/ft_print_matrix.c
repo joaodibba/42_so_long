@@ -6,13 +6,13 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 15:20:14 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/13 15:20:34 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/14 16:05:35 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	printmatrix(char **matrix)
+void	ft_print_matrix(char **matrix)
 {
 	size_t	y;
 	size_t	size;
