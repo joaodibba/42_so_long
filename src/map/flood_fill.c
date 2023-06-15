@@ -6,42 +6,45 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:40:09 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/14 16:07:30 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/15 03:42:12 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/so_long.h"
 
-int	fill(t_pos pos, int y, int x, t_map *map)
+bool	fill(int y, int x, t_map *map)
 {
-	if (x >= pos.x || y >= pos.y || x < 0 || y < 0)
-		return (0);
+	if (x >= (int)map->width || y >= (int)map->height || x < 0 || y < 0)
+		return (false);
 	if (map->grid[y][x] == EMPTY_SPACE)
 	{
 		map->grid[y][x] = WALL;
-		return (1);
+		return (true);
 	}
 	if (map->grid[y][x] == COLLECTIBLE)
 	{
 		++map->flood.collectibles_collected;
 		map->grid[y][x] = WALL;
-		return (1);
+		return (true);
 	}
 	if (map->grid[y][x] == MAP_EXIT)
+	{
 		map->flood.exit_reached = true;
-	return (0);
+		return (true);
+	}
+	return (false);
 }
 
-void	flood(t_pos size, int y, int x, t_map *map)
+void	flood(int y, int x, t_map *map)
 {
-	if (fill(size, y, x - 1, map))
-		flood(size, y, x - 1, map);
-	if (fill(size, y, x + 1, map))
-		flood(size, y, x + 1, map);
-	if (fill(size, y - 1, x, map))
-		flood(size, y - 1, x, map);
-	if (fill(size, y + 1, x, map))
-		flood(size, y + 1, x, map);
+	if (fill(y, x - 1, map))
+		flood(y, x - 1, map);
+	if (fill(y, x + 1, map))
+		flood(y, x + 1, map);
+	if (fill(y - 1, x, map))
+		flood(y - 1, x, map);
+	if (fill(y + 1, x, map))
+		flood(y + 1, x, map);
 }
 
 bool	map_valid_path_checker(t_map *map)
@@ -55,9 +58,12 @@ bool	map_valid_path_checker(t_map *map)
 	start_pos = find_in_map(map_copy.grid, MAP_START);
 	if (!map_copy.grid)
 		return (false);
-	flood((t_pos){map->height, map->width}, start_pos.y, \
-	start_pos.x, &map_copy);
-	ft_print_matrix(map_copy.grid);
+	flood(start_pos.y, start_pos.x, &map_copy);
+	if (map->collectible_count != map_copy.flood.collectibles_collected)
+	{
+		ft_free_matrix(map_copy.grid);
+		return (false);
+	}
 	ft_free_matrix(map_copy.grid);
 	return (map_copy.flood.exit_reached);
 }
