@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:40:09 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/15 03:42:12 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/06/15 16:31:53 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ bool	map_valid_path_checker(t_map *map)
 	if (!map_copy.grid)
 		return (false);
 	flood(start_pos.y, start_pos.x, &map_copy);
+	// verifica se ainda ha patos no mata oh filho
 	if (map->collectible_count != map_copy.flood.collectibles_collected)
 	{
 		ft_free_matrix(map_copy.grid);
