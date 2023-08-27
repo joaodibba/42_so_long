@@ -6,7 +6,7 @@
 /*   By: jalves-c < jalves-c@student.42lisboa.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 17:21:56 by jalves-c          #+#    #+#             */
-/*   Updated: 2023/06/15 12:09:14 by jalves-c         ###   ########.fr       */
+/*   Updated: 2023/08/27 23:02:24 by jalves-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@
 # include "macros.h"
 # include <stdlib.h>
 # include <stdio.h>
-# include <X11/X.h>
+
+# ifdef __linux__
+#  include <X11/X.h>
+# endif
 
 //arguments management
 bool			arguments_check(int ac, char **av);
